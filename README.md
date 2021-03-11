@@ -1,4 +1,4 @@
-Virtual stonks frontend
+Virtual stonks frontend app
 
 # Getting Started with Create React App
 
