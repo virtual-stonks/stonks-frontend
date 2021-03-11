@@ -5,11 +5,17 @@ import "./Coin.css"
 
 const Crypto = () => {
     const [crypto, setCrypto] = useState([]);
+    const [direction, setDirection] = useState({
+        symbol: "asc",
+        name: "asc",
+        current_price: "asc",
+        price_change_percentage_24h: "asc"
+    });
 
     useEffect(() => {
         axios
             .get(
-                'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=1000&page=1&sparkline=false'
+                'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false'
             )
             .then(res => {
                 setCrypto(res.data);
@@ -19,6 +25,19 @@ const Crypto = () => {
     }, []);
 
     const handleChange = (e) => {
+    }
+
+    const sortBy = (key) => {
+        setDirection({
+            [key]: direction[key] === "asc" ? "desc" : "asc"
+        });
+
+        const sortedData = [].concat(crypto).sort((a, b) => {
+            return (a[key] < b[key] ? (direction[key] === "asc" ? -1 : 1) : (direction[key] === "asc" ? 1 : -1));
+        });
+        console.log(sortedData);
+        setCrypto(sortedData);
+        console.log(crypto);
     }
 
     return (
@@ -33,7 +52,6 @@ const Crypto = () => {
                             id="exampleInputEmail1"
                             aria-describedby="emailHelp"
                             placeholder="BTC, ETH..."
-                            onChange={handleChange}
                         />
                     </div>
                 </form>
@@ -41,10 +59,38 @@ const Crypto = () => {
                     <thead>
                         <tr>
                             <th scope="col">Coin</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Symbol</th>
-                            <th scope="col">LTP</th>
-                            <th scope="col">%</th>
+                            <th scope="col">
+                                Name
+                                <i
+                                    className="fa fa-fw fa-sort"
+                                    onClick={() => sortBy("name")}
+                                    style={{ cursor: "pointer" }}
+                                />
+                            </th>
+                            <th scope="col">                                
+                                Symbol
+                                <i
+                                    className="fa fa-fw fa-sort"
+                                    onClick={() => sortBy("symbol")}
+                                    style={{ cursor: "pointer" }}
+                                />
+                            </th>
+                            <th scope="col">
+                                LTP
+                                <i
+                                    className="fa fa-fw fa-sort"
+                                    onClick={() => sortBy("current_price")}
+                                    style={{ cursor: "pointer" }}
+                                />
+                            </th>
+                            <th scope="col">
+                                %
+                                <i
+                                    className="fa fa-fw fa-sort"
+                                    onClick={() => sortBy("price_change_percentage_24h")}
+                                    style={{ cursor: "pointer" }}
+                                />
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,11 +109,11 @@ const Crypto = () => {
 
                     </tbody>
                 </table>
-            </div>
+            </div >
             <div className="col-sm-7">
 
             </div>
-        </div>
+        </div >
     )
 }
 

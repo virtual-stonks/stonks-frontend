@@ -7,7 +7,7 @@ const Coin = ({ name, price, symbol, image, priceChange }) => {
                 <td><img src={image} alt="crypto" className="img-responsive crypto-img" /></td>
                 <th scope="row">{name}</th>
                 <td>{symbol.toUpperCase()}</td>
-                <td>${price}</td>
+                <td>$ {price}</td>
                 <td
                     style={{ color: `${priceChange < 0 ? "red" : "green"}` }}
                 >
