@@ -8,7 +8,11 @@ const Coin = ({ name, price, symbol, image, priceChange }) => {
                 <th scope="row">{name}</th>
                 <td>{symbol.toUpperCase()}</td>
                 <td>${price}</td>
-                <td>{priceChange.toFixed(2)}</td>
+                <td
+                    style={{ color: `${priceChange < 0 ? "red" : "green"}` }}
+                >
+                    {priceChange.toFixed(2)}
+                </td>
             </tr>
         </>
     )
