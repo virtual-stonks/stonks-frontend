@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from "axios"
 import Coin from './Coin';
 import "./Coin.css"
+import numeral from "numeral"
 
 const Crypto = () => {
     const [crypto, setCrypto] = useState([]);
@@ -9,7 +10,8 @@ const Crypto = () => {
         symbol: "asc",
         name: "asc",
         current_price: "asc",
-        price_change_percentage_24h: "asc"
+        price_change_percentage_24h: "asc",
+        market_cap: "asc"
     });
 
     useEffect(() => {
@@ -41,8 +43,8 @@ const Crypto = () => {
     }
 
     return (
-        <div className="row">
-            <div className="col-sm-5">
+        <div className="row container">
+            <div className="col-sm-6">
                 <h1 className='crypto-text'>Search a Crypto</h1>
                 <form>
                     <div className="form-group">
@@ -67,11 +69,19 @@ const Crypto = () => {
                                     style={{ cursor: "pointer" }}
                                 />
                             </th>
-                            <th scope="col">                                
-                                Symbol
+                            <th scope="col">
+                                Sym
                                 <i
                                     className="fa fa-fw fa-sort"
                                     onClick={() => sortBy("symbol")}
+                                    style={{ cursor: "pointer" }}
+                                />
+                            </th>
+                            <th scope="col">
+                                MC
+                                <i
+                                    className="fa fa-fw fa-sort"
+                                    onClick={() => sortBy("market_cap")}
                                     style={{ cursor: "pointer" }}
                                 />
                             </th>
@@ -103,6 +113,7 @@ const Crypto = () => {
                                     symbol={coin.symbol}
                                     image={coin.image}
                                     priceChange={coin.price_change_percentage_24h}
+                                    marketCap={coin.market_cap}
                                 />
                             )
                         })}
@@ -110,7 +121,7 @@ const Crypto = () => {
                     </tbody>
                 </table>
             </div >
-            <div className="col-sm-7">
+            <div className="col-sm-6">
 
             </div>
         </div >
