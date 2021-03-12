@@ -12,7 +12,7 @@ const Coin = ({ name, price, symbol, image, priceChange, marketCap, low_24h, hig
                 <td>$ {numeral(low_24h).format("0.0a")}</td>
                 <td>$ {numeral(high_24h).format("0.0a")}</td>
                 <td
-                    style={{ color: `${priceChange < 0 ? "red" : "green"}` }}
+                    style={{ color: `${priceChange < 0 ? "red" : "#00ff00"}` }}
                 >
                     {priceChange.toFixed(2)}
                     <i

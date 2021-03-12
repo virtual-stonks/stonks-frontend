@@ -3,6 +3,7 @@ import axios from "axios"
 import Coin from './Coin';
 import "./Coin.css"
 import numeral from "numeral"
+import Spinner from "../../spinner/Spinner"
 
 const Crypto = () => {
     const [crypto, setCrypto] = useState([]);
@@ -11,8 +12,14 @@ const Crypto = () => {
         name: "asc",
         current_price: "asc",
         price_change_percentage_24h: "asc",
-        market_cap: "asc"
+        market_cap: "asc",
+        low_24h: "asc",
+        high_24h: "asc",
+        total_volume: "asc"
     });
+    const [search, setSearch] = useState("");
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         axios
@@ -22,11 +29,13 @@ const Crypto = () => {
             .then(res => {
                 setCrypto(res.data);
                 console.log(res.data);
+                setLoading(false);
             })
-            .catch(error => console.log(error));
+            .catch(error => { console.log(error); setError(true) });
     }, []);
 
-    const handleChange = (e) => {
+    const searchCrypto = (data) => {
+        return data.filter(row => row.name.toLowerCase().indexOf(search.toLowerCase()) > -1)
     }
 
     const sortBy = (key) => {
@@ -43,6 +52,7 @@ const Crypto = () => {
     }
 
     return (
+
         <div className="container">
 
             <h1 className='crypto-text'>Search a Crypto</h1>
@@ -54,6 +64,7 @@ const Crypto = () => {
                         id="exampleInputEmail1"
                         aria-describedby="emailHelp"
                         placeholder="BTC, ETH..."
+                        onChange={(e) => setSearch(e.target.value)}
                     />
                 </div>
             </form>
@@ -147,22 +158,24 @@ const Crypto = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {crypto.map(coin => {
-                        return (
-                            <Coin
-                                key={coin.id}
-                                name={coin.name}
-                                price={coin.current_price}
-                                symbol={coin.symbol}
-                                image={coin.image}
-                                priceChange={coin.price_change_percentage_24h}
-                                marketCap={coin.market_cap}
-                                low_24h={coin.low_24h}
-                                high_24h={coin.high_24h}
-                                total_volume={coin.total_volume}
-                            />
-                        )
-                    })}
+                    {loading ? <Spinner /> :
+                        error ? <> Error </> :
+                            searchCrypto(crypto).map(coin => {
+                                return (
+                                    <Coin
+                                        key={coin.id}
+                                        name={coin.name}
+                                        price={coin.current_price}
+                                        symbol={coin.symbol}
+                                        image={coin.image}
+                                        priceChange={coin.price_change_percentage_24h}
+                                        marketCap={coin.market_cap}
+                                        low_24h={coin.low_24h}
+                                        high_24h={coin.high_24h}
+                                        total_volume={coin.total_volume}
+                                    />
+                                )
+                            })}
 
                 </tbody>
             </table>
