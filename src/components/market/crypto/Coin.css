@@ -1,12 +1,11 @@
 .crypto-text {  
-    text-align: left;
+    text-align: center;
 }
 
 .crypto-img{
     height: 30px;
     width: 30px;    
 }
-
-.table-responsive {    
-    max-height: 500px;    
+.robinhood-green{
+    color: "#00ff00"
 }
