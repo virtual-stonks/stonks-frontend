@@ -155,6 +155,14 @@ const Crypto = () => {
                                 style={{ cursor: "pointer" }}
                             />
                         </th>
+                        <th scope="col"
+                            style={{ color: "#00ff00" }}
+                        >
+                            Transact
+                                <i
+                                className="fas fa-fw fa-hand-holding-usd"
+                            />
+                        </th>
                     </tr>
                 </thead>
                 <tbody>

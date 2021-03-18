@@ -20,6 +20,10 @@ const Coin = ({ name, price, symbol, image, priceChange, marketCap, low_24h, hig
                     />
                 </td>
                 <td> {numeral(total_volume).format("0.0a")}</td>
+                <td>
+                    <button type="button" className="btn btn-outline-light">
+                        <i class="fas fa-money-check-alt" style={{ color: "#00ff00" }} ></i>
+                    </button></td>
             </tr>
         </>
     )
