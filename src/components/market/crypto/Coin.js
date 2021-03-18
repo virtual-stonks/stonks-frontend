@@ -1,6 +1,10 @@
 import React from 'react'
 import numeral from "numeral"
-const Coin = ({ name, price, symbol, image, priceChange, marketCap, low_24h, high_24h, total_volume }) => {
+import { useHistory } from "react-router-dom";
+
+const Coin = (props) => {
+    const { name, price, symbol, image, priceChange, marketCap, low_24h, high_24h, total_volume } = props;
+    let history = useHistory();
     return (
         <>
             <tr>
@@ -21,7 +25,16 @@ const Coin = ({ name, price, symbol, image, priceChange, marketCap, low_24h, hig
                 </td>
                 <td> {numeral(total_volume).format("0.0a")}</td>
                 <td>
-                    <button type="button" className="btn btn-outline-light">
+                    <button
+                        type="button"
+                        className="btn btn-outline-light"
+                        onClick={() => history.push(
+                            {
+                                pathname: `/live/crypto`,
+                                state: { detail: { name, symbol } }
+                            }
+                        )}
+                    >
                         <i class="fas fa-money-check-alt" style={{ color: "#00ff00" }} ></i>
                     </button></td>
             </tr>
