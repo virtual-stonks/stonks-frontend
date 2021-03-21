@@ -54,7 +54,6 @@ const Crypto = () => {
     return (
 
         <div className="container">
-
             <h1 className='crypto-text'>Search a Crypto</h1>
             <form>
                 <div className="form-group">

@@ -1,13 +1,11 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import Spinner from '../../utils/Spinner';
 import CoinLiveData from './CoinLiveData';
 
 const CoinLive = () => {
     const location = useLocation();
-    let history = useHistory();
 
     const [coindata, setCoindata] = useState({});
     const [symbolID, setSymbolID] = useState({});
@@ -53,23 +51,9 @@ const CoinLive = () => {
     }, [location]);
 
     return (
-
-        <div className="container">
-            <button
-                type="button"
-                className="btn btn-outline-light"
-                onClick={() => history.push(
-                    {
-                        pathname: `/`,
-                    }
-                )}
-            >
-                Back
-            </button>
-            <>
-                { loading ? <Spinner /> : <CoinLiveData data={coindata} symbol={symbolID} image={imageID} loading={loading} />}
-            </>
-        </div>
+        <>
+            { loading ? <Spinner /> : <CoinLiveData data={coindata} symbol={symbolID} image={imageID} loading={loading} />}
+        </>
     )
 }
 
