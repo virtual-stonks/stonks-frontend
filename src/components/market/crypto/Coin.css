@@ -10,6 +10,10 @@
     color: "#00ff00"
 }
 
+.robinhood-yellow{
+    color: rgba(255, 217, 2, 0.945)
+}
+
 .push-right {
     float: right;
 }

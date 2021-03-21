@@ -47,8 +47,8 @@ const CoinLiveData = (props) => {
                                 </span>
                             </h5>
 
-                            <h6 className="card-subtitle mb-2 text-muted">{eventType}</h6>
-                            <h6 className="card-subtitle mb-2 text-muted">{moment().format('MMMM Do YYYY, h:mm:ss a')}</h6>
+                            <h6 className="card-subtitle mb-2 robinhood-yellow" >{eventType}</h6>
+                            <h6 className="card-subtitle mb-2 robinhood-yellow">{moment().format('MMMM Do YYYY, h:mm:ss a')}</h6>
                         </div>
                         <div class="card-header">
                             Last Traded Price: $ {Number(lastPrice).toFixed(3).toLocaleString()}
