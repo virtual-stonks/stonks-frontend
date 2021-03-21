@@ -7,9 +7,42 @@ const CoinLive = () => {
     const location = useLocation();
     let history = useHistory();
 
+    const socketCall = ({ name, symbol }) => {
+
+
+    }
+
     useEffect(() => {
         console.log(location.pathname); // result: '/secondpage'
-        console.log(location);
+        console.log(location.state.detail);
+
+        const { name, symbol } = location.state.detail;
+        let ws = null;// websocket variable
+        let miniTickerString = null;// binance miniticker string
+
+        if (symbol.toLowerCase() != "usdt") {
+            miniTickerString = `${symbol.toLowerCase()}usdt@miniTicker`;
+            ws = new WebSocket(`wss://stream.binance.com:9443/ws/${miniTickerString}`);
+        }
+        else {
+            miniTickerString = `${symbol.toLowerCase()}bidr@miniTicker`;
+            ws = new WebSocket(`wss://stream.binance.com:9443/ws/${miniTickerString}`);
+        }
+
+        ws.onopen = () => {
+            console.log(`Socket connected! to ${miniTickerString}`);
+        };
+
+        ws.onmessage = e => {
+            const value = e.data;
+            console.log(e.data);
+        };
+
+        return () => {
+            console.log(`Socket disonnected! from ${miniTickerString}`);
+            ws.close();
+        };
+
     }, [location]);
 
     return (
