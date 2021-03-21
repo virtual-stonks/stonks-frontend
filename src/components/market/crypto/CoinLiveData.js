@@ -50,8 +50,8 @@ const CoinLiveData = (props) => {
                             <h6 className="card-subtitle mb-2 robinhood-yellow" >{eventType}</h6>
                             <h6 className="card-subtitle mb-2 robinhood-yellow">{moment().format('MMMM Do YYYY, h:mm:ss a')}</h6>
                         </div>
-                        <div class="card-header">
-                            Last Traded Price: $ {Number(lastPrice).toFixed(3).toLocaleString()}
+                        <div className="card-header">
+                            Last Traded Price: <span className="robinhood-yellow"> $ {Number(lastPrice).toFixed(3).toLocaleString()} </span>
                         </div>
                         <div class="card-header">
                             Last Traded Qt: {Number(lastQt).toFixed(3).toLocaleString()}
@@ -60,14 +60,9 @@ const CoinLiveData = (props) => {
                             <li className="list-group-item black-bg">Open Price: $ {Number(openPrice).toFixed(3).toLocaleString()}</li>
                             <li className="list-group-item black-bg">High Price: $ {Number(highPrice).toFixed(3).toLocaleString()}</li>
                             <li className="list-group-item black-bg">Low Price: $ {Number(lowPrice).toFixed(3).toLocaleString()}</li>
-                            <li className="list-group-item black-bg">Price Change:  <span style={{ color: `${Number(priceChangePercent) < 0 ? "red" : "robinhood-green"}` }}>${Number(priceChange).toFixed(3).toLocaleString()} </span></li>
-                            <li className="list-group-item black-bg">Price Change%: <span style={{ color: `${Number(priceChangePercent) < 0 ? "red" : "robinhood-green"}` }}>${Number(priceChangePercent).toFixed(3).toLocaleString()} </span></li>
+                            <li className="list-group-item black-bg">Price Change:  <span className="black-bg" style={{ color: `${Number(priceChangePercent) < 0 ? "red" : "#00ff00"}` }}>$ {Number(priceChange).toFixed(3).toLocaleString()} </span></li>
+                            <li className="list-group-item black-bg">Price Change%: <span className="black-bg" style={{ color: `${Number(priceChangePercent) < 0 ? "red" : "#00ff00"}` }}>$ {Number(priceChangePercent).toFixed(3).toLocaleString()} </span></li>
                             <li className="list-group-item black-bg">Weighted Price: $ {Number(wtAvgPrice).toFixed(3).toLocaleString()}</li>
-                        </ul>
-                        <div class="card-header">
-                            Volumes
-                        </div>
-                        <ul class="list-group list-group-flush">
                             <li class="list-group-item black-bg">Total Trades: {Number(totalTrades).toFixed(3).toLocaleString()}</li>
                             <li class="list-group-item black-bg">Total Traded Volume: {Number(totalTradedAssetVolume).toFixed(3).toLocaleString()}</li>
                         </ul>
