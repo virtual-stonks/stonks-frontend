@@ -2,6 +2,7 @@ import React from 'react'
 import { unixFormat } from '../../utils/UnixConverter';
 import { useHistory } from "react-router-dom";
 import moment from "moment"
+import TradingChart from './TradingChart';
 const CoinLiveData = (props) => {
     let history = useHistory();
     const {
@@ -72,9 +73,9 @@ const CoinLiveData = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-12 col-md-6"></div>
+                <TradingChart />
+                {/* <div className="col-sm-12 col-md-6"></div> */}
             </div >
-
         </div >
     )
 }
