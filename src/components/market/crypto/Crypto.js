@@ -51,7 +51,6 @@ const Crypto = () => {
     }
 
     return (
-
         <div className="container">
             <h1 className='crypto-text'>Search a Crypto</h1>
             <form>
@@ -66,7 +65,7 @@ const Crypto = () => {
                     />
                 </div>
             </form>
-            <table className="table table-striped table-responsive">
+            <table className="table table-striped table-dark table-responsive">
                 <thead>
                     <tr>
                         <th scope="col"

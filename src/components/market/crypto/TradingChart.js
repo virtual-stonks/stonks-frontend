@@ -79,9 +79,9 @@ const TradingChart = (props) => {
             watermark: {
                 color: 'white',
                 visible: true,
-                text: 'TradingView Watermark Example',
+                text: `${props.symbol.toUpperCase()}`,
                 fontSize: 24,
-                horzAlign: 'right',
+                horzAlign: 'left',
                 vertAlign: 'top',
             },
         });
