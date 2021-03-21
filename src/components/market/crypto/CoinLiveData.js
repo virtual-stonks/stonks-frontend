@@ -23,11 +23,14 @@ const CoinLiveData = (props) => {
     } = props.data;
     const { name, symbol } = props.symbol;
     const image = props.image;
+    let unixEpoch = new Date().getTime();
+
+    
 
     return (
-        <div className="black-bg text-white" >
+        <div className="container black-bg text-white" >
             <div className="row black-bg" >
-                <div className="col-sm-12 col-md-6 p-3">
+                <div className="col-sm-12 col-md-4 p-3">
                     <div class="card black-bg mb-3">
                         <div class="card-body">
                             <h5 class="card-title">
@@ -72,7 +75,6 @@ const CoinLiveData = (props) => {
                         </div>
                     </div>
                 </div>
-
                 <TradingChart symbol={symbol} />
                 {/* <div className="col-sm-12 col-md-6"></div> */}
             </div >
