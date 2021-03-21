@@ -1,15 +1,22 @@
 import './App.css';
 import React from 'react'
-import { Route } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 
 import Navbar from './components/Navbar'
 import Dashboard from './components/Dashboard'
+import Crypto from './components/market/crypto/Crypto';
+import CoinLive from './components/market/crypto/CoinLive';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <Route exact path="/" component={Dashboard} />
+      <Switch>
+        {/* <Route exact path="/market/crypto" component={Crypto} /> */}
+        <Route exact path="/" component={Crypto} />
+        <Route exact path="/live/crypto" component={CoinLive} />
+        {/* <Route exact path="/live/crypto" component={Dashboard} /> */}
+      </Switch>
     </div>
   )
 }
