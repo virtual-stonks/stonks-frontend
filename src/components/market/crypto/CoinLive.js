@@ -9,6 +9,7 @@ const CoinLive = () => {
     let history = useHistory();
 
     const [coindata, setCoindata] = useState({});
+    const [symbolID, setSymbolID] = useState({});
     let cnt = 0;
 
     useEffect(() => {
@@ -16,6 +17,7 @@ const CoinLive = () => {
         console.log(location.state.detail);
 
         const { name, symbol } = location.state.detail;
+        setSymbolID(location.state.detail);
         let ws = null;// websocket variable
         let miniTickerString = null;// binance miniticker string
 
@@ -60,7 +62,7 @@ const CoinLive = () => {
                 Back
             </button>
             <>
-                <CoinLiveData data={coindata} />
+                <CoinLiveData data={coindata} symbol={symbolID} />
             </>
         </div>
     )
