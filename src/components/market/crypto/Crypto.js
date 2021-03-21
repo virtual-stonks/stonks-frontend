@@ -28,7 +28,6 @@ const Crypto = () => {
             )
             .then(res => {
                 setCrypto(res.data);
-                console.log(res.data);
                 setLoading(false);
             })
             .catch(error => { console.log(error); setError(true) });

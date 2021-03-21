@@ -25,12 +25,11 @@ const CoinLiveData = (props) => {
     const image = props.image;
 
     return (
-        <div className="container black-bg text-white" >
+        <div className="black-bg text-white" >
             <div className="row black-bg" >
                 <div className="col-sm-12 col-md-6 p-3">
                     <div class="card black-bg mb-3">
                         <div class="card-body">
-                            {console.log(props.data)}
                             <h5 class="card-title">
                                 <img src={image} alt="crypto" className="img-responsive crypto-img m-1" />
                                 {name?.toUpperCase()} ({symbol?.toUpperCase()})
@@ -73,7 +72,8 @@ const CoinLiveData = (props) => {
                         </div>
                     </div>
                 </div>
-                <TradingChart />
+
+                <TradingChart symbol={symbol} />
                 {/* <div className="col-sm-12 col-md-6"></div> */}
             </div >
         </div >

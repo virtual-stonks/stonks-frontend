@@ -39,7 +39,6 @@ const CoinLive = () => {
 
         ws.onmessage = e => {
             const value = JSON.parse(e.data);
-            console.log(value);
             setCoindata(value);
         };
 
