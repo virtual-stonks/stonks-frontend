@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createChart } from 'lightweight-charts';
 import axios from 'axios';
 
-const TradingChart = (props) => {
+const TradingChartArea = (props) => {
     const ref = React.useRef();
     const [historicalData, setHistoricalData] = useState([]);
     const [isUpdated, setIsUpdated] = useState(false);
@@ -19,10 +19,7 @@ const TradingChart = (props) => {
                 for (let i = 0; i < res.data.length; i++) {
                     let hObj = {
                         time: res.data[i][0] / 1000,
-                        open: res.data[i][1],
-                        high: res.data[i][2],
-                        low: res.data[i][3],
-                        close: res.data[i][4]
+                        value: res.data[i][4]
                     };
 
                     hData.push(hObj);
@@ -41,64 +38,50 @@ const TradingChart = (props) => {
         const chart = createChart(ref.current, {
             width: ref.current.clientWidth,
             height: ref.current.clientHeight,
+            rightPriceScale: {
+                scaleMargins: {
+                    top: 0.1,
+                    bottom: 0.2,
+                },
+            },
             layout: {
-                backgroundColor: '#253248',
-                textColor: 'rgba(255, 255, 255, 0.9)',
+                backgroundColor: '#2B2B43',
+                textColor: 'white',
+                lineColor: 'rgba(32, 226, 47, 1)',
+            },
+            watermark: {
+                visible: true,
+                fontSize: 24,
+                horzAlign: 'top',
+                vertAlign: 'left',
+                color: 'rgba(32, 226, 47, 1)',
+                text: `${props.name.toUpperCase()}(${props.symbol.toUpperCase()})`,
             },
             crosshair: {
-                vertLine: {
-                    color: 'white',
-                    width: 0.1,
-                    style: 1,
-                    visible: true,
-                    labelVisible: false,
-                },
-                horzLine: {
-                    color: 'white',
-                    width: 0.1,
-                    style: 1,
-                    visible: true,
-                    labelVisible: true,
-                },
-                mode: 1,
+                color: 'rgba(32, 226, 47, 1)',
             },
             grid: {
                 vertLines: {
-                    color: '#334158',
+                    color: '#2B2B43',
                 },
                 horzLines: {
-                    color: '#334158',
+                    color: '#363C4E',
                 },
-            },
-            priceScale: {
-                borderColor: '#485c7b',
-            },
-            timeScale: {
-                borderColor: '#485c7b',
-            },
-            watermark: {
-                color: 'white',
-                visible: true,
-                text: `${props.name.toUpperCase()}(${props.symbol.toUpperCase()})`,
-                fontSize: 24,
-                horzAlign: 'left',
-                vertAlign: 'top',
             },
         });
 
 
 
-        let candleSeries = chart.addCandlestickSeries({
-            upColor: '#00ff00',
-            downColor: 'rgb(195, 41, 41)',
-            borderDownColor: 'rgb(195, 41, 41)',
-            borderUpColor: '#00ff00',
-            wickDownColor: 'rgb(195, 41, 41)',
-            wickUpColor: '#00ff00',
+        let areaSeries = chart.addAreaSeries({
+            topColor: 'rgba(32, 226, 47, 056)',
+            bottomColor: 'rgba(32, 226, 47, 0.04)',
+            lineColor: 'rgba(32, 226, 47, 1)',
+            lineWidth: 2,
+            symbol: 'AAPL',
         });
 
         console.log('hi');
-        candleSeries.setData(historicalData);
+        areaSeries.setData(historicalData);
 
         let ws = null;// websocket variable
         let miniTickerString = null;// binance miniticker string
@@ -121,20 +104,14 @@ const TradingChart = (props) => {
             const {
                 t: unixTime,
                 c: lastPrice,
-                o: openPrice,
-                h: highPrice,
-                l: lowPrice,
             } = value.k;
 
             const latestCandle = {
                 time: unixTime / 1000,
-                open: openPrice,
-                close: lastPrice,
-                low: lowPrice,
-                high: highPrice
+                value: lastPrice,
             }
 
-            candleSeries.update(latestCandle);
+            areaSeries.update(latestCandle);
         };
 
         // onUnMount
@@ -154,4 +131,4 @@ const TradingChart = (props) => {
     );
 }
 
-export default TradingChart;
+export default TradingChartArea;

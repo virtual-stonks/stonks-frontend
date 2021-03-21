@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { unixFormat } from '../../utils/UnixConverter';
 import { useHistory } from "react-router-dom";
 import moment from "moment"
 import TradingChart from './TradingChart';
+import TradingChartArea from './TradingChartArea';
 const CoinLiveData = (props) => {
     let history = useHistory();
+
     const {
         e: eventType,
         E: unixTime,
@@ -24,8 +26,8 @@ const CoinLiveData = (props) => {
     const { name, symbol } = props.symbol;
     const image = props.image;
     let unixEpoch = new Date().getTime();
+    const [currentChart, setCurrentChart] = useState("candle-chart")
 
-    
 
     return (
         <div className="container black-bg text-white" >
@@ -52,12 +54,17 @@ const CoinLiveData = (props) => {
 
                             <h6 className="card-subtitle mb-2 robinhood-yellow" >{eventType}</h6>
                             <h6 className="card-subtitle mb-2 robinhood-yellow">{moment().format('MMMM Do YYYY, h:mm:ss a')}</h6>
+
                         </div>
                         <div className="card-header">
                             Last Traded Price: <span className="robinhood-yellow"> $ {Number(lastPrice).toFixed(3).toLocaleString()} </span>
                         </div>
                         <div class="card-header">
                             Last Traded Qt: {Number(lastQt).toFixed(3).toLocaleString()}
+                        </div>
+                        <div class="card-header">
+                            <button type="button" class="btn btn-outline-warning m-1" onClick={() => setCurrentChart("candle-chart")}>CandleStick</button>
+                            <button type="button" class="btn btn-outline-success m-1" onClick={() => setCurrentChart("area-chart")}> Area</button>
                         </div>
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item black-bg">Open Price: $ {Number(openPrice).toFixed(3).toLocaleString()}</li>
@@ -75,7 +82,7 @@ const CoinLiveData = (props) => {
                         </div>
                     </div>
                 </div>
-                <TradingChart symbol={symbol} />
+                {currentChart === "candle-chart" ? <TradingChart symbol={symbol} name={name} /> : <TradingChartArea symbol={symbol} name={name} />}
                 {/* <div className="col-sm-12 col-md-6"></div> */}
             </div >
         </div >
