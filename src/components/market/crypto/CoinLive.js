@@ -1,16 +1,15 @@
 import React from 'react'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import CoinLiveData from './CoinLiveData';
 
 const CoinLive = () => {
     const location = useLocation();
     let history = useHistory();
 
-    const socketCall = ({ name, symbol }) => {
-
-
-    }
+    const [coindata, setCoindata] = useState({});
+    let cnt = 0;
 
     useEffect(() => {
         console.log(location.pathname); // result: '/secondpage'
@@ -21,11 +20,11 @@ const CoinLive = () => {
         let miniTickerString = null;// binance miniticker string
 
         if (symbol.toLowerCase() != "usdt") {
-            miniTickerString = `${symbol.toLowerCase()}usdt@miniTicker`;
+            miniTickerString = `${symbol.toLowerCase()}usdt@ticker`;
             ws = new WebSocket(`wss://stream.binance.com:9443/ws/${miniTickerString}`);
         }
         else {
-            miniTickerString = `${symbol.toLowerCase()}bidr@miniTicker`;
+            miniTickerString = `${symbol.toLowerCase()}bidr@ticker`;
             ws = new WebSocket(`wss://stream.binance.com:9443/ws/${miniTickerString}`);
         }
 
@@ -34,8 +33,9 @@ const CoinLive = () => {
         };
 
         ws.onmessage = e => {
-            const value = e.data;
-            console.log(e.data);
+            const value = JSON.parse(e.data);
+            console.log(value);
+            setCoindata(value);
         };
 
         return () => {
@@ -46,6 +46,7 @@ const CoinLive = () => {
     }, [location]);
 
     return (
+
         <div className="container">
             <button
                 type="button"
@@ -59,13 +60,7 @@ const CoinLive = () => {
                 Back
             </button>
             <>
-                <div className="card" style={{ width: "18rem" }}>
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
+                <CoinLiveData data={coindata} />
             </>
         </div>
     )
