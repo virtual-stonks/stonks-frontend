@@ -10,15 +10,15 @@ const TradingChart = (props) => {
     useEffect(() => {
         const symbol = props.symbol.toUpperCase();
         let unixEpoch = new Date().getTime();
-        let binance_line_string = `https://api.binance.com/api/v3/klines?symbol=${symbol}USDT&interval=1m&endTime=${unixEpoch}&limit=1000`;
+        let binance_line_string = `https://api.binance.com/api/v3/klines?symbol=${symbol}USDT&interval=1d&endTime=${unixEpoch}&limit=1000`;
         if (symbol === "USDT")
-            binance_line_string = `https://api.binance.com/api/v3/klines?symbol=${symbol}BIDR&interval=1m&endTime=${unixEpoch}&limit=1000`;
+            binance_line_string = `https://api.binance.com/api/v3/klines?symbol=${symbol}BIDR&interval=1d&endTime=${unixEpoch}&limit=1000`;
         axios.get(binance_line_string)
             .then((res) => {
                 let hData = []
                 for (let i = 0; i < res.data.length; i++) {
                     let hObj = {
-                        time: res.data[i][0],
+                        time: res.data[i][0] / 1000,
                         open: res.data[i][1],
                         high: res.data[i][2],
                         low: res.data[i][3],
@@ -103,11 +103,11 @@ const TradingChart = (props) => {
         let ws = null;// websocket variable
         let miniTickerString = null;// binance miniticker string
         if (props.symbol.toLowerCase() != "usdt") {
-            miniTickerString = `${props.symbol.toLowerCase()}usdt@kline_1m`;
+            miniTickerString = `${props.symbol.toLowerCase()}usdt@kline_1d`;
             ws = new WebSocket(`wss://stream.binance.com:9443/ws/${miniTickerString}`);
         }
         else {
-            miniTickerString = `${props.symbol.toLowerCase()}bidr@kline_1m`;
+            miniTickerString = `${props.symbol.toLowerCase()}bidr@kline_1d`;
             ws = new WebSocket(`wss://stream.binance.com:9443/ws/${miniTickerString}`);
         }
 
@@ -127,7 +127,7 @@ const TradingChart = (props) => {
             } = value.k;
 
             const latestCandle = {
-                time: unixTime,
+                time: unixTime / 1000,
                 open: openPrice,
                 close: lastPrice,
                 low: lowPrice,
