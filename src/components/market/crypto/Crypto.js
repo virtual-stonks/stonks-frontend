@@ -3,7 +3,7 @@ import axios from "axios"
 import Coin from './Coin';
 import "./Coin.css"
 import numeral from "numeral"
-import Spinner from "../../spinner/Spinner"
+import Spinner from "../../utils/Spinner"
 
 const Crypto = () => {
     const [crypto, setCrypto] = useState([]);
@@ -68,7 +68,7 @@ const Crypto = () => {
                     />
                 </div>
             </form>
-            <table className="table table-striped table-dark table-responsive">
+            <table className="table table-striped table-responsive">
                 <thead>
                     <tr>
                         <th scope="col"

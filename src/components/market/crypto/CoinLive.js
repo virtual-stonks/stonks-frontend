@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import Spinner from '../../utils/Spinner';
 import CoinLiveData from './CoinLiveData';
 
 const CoinLive = () => {
@@ -10,14 +11,17 @@ const CoinLive = () => {
 
     const [coindata, setCoindata] = useState({});
     const [symbolID, setSymbolID] = useState({});
+    const [imageID, setimageID] = useState();
+    const [loading, setLoading] = useState(true);
     let cnt = 0;
 
     useEffect(() => {
         console.log(location.pathname); // result: '/secondpage'
         console.log(location.state.detail);
 
-        const { name, symbol } = location.state.detail;
+        const { name, symbol, image } = location.state.detail;
         setSymbolID(location.state.detail);
+        setimageID(location.state.detail.image);
         let ws = null;// websocket variable
         let miniTickerString = null;// binance miniticker string
 
@@ -32,6 +36,7 @@ const CoinLive = () => {
 
         ws.onopen = () => {
             console.log(`Socket connected! to ${miniTickerString}`);
+            setLoading(false);
         };
 
         ws.onmessage = e => {
@@ -62,7 +67,7 @@ const CoinLive = () => {
                 Back
             </button>
             <>
-                <CoinLiveData data={coindata} symbol={symbolID} />
+                { loading ? <Spinner /> : <CoinLiveData data={coindata} symbol={symbolID} image={imageID} loading={loading} />}
             </>
         </div>
     )

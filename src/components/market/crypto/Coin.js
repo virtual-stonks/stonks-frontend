@@ -31,7 +31,7 @@ const Coin = (props) => {
                         onClick={() => history.push(
                             {
                                 pathname: `/live/crypto`,
-                                state: { detail: { name, symbol } }
+                                state: { detail: { name, symbol, image } }
                             }
                         )}
                     >
