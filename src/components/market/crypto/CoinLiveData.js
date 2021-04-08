@@ -5,6 +5,7 @@ import moment from "moment"
 import TradingChart from './TradingChart';
 import TradingChartArea from './TradingChartArea';
 import BuyModal from './BuyModal';
+import { Button } from 'reactstrap';
 const CoinLiveData = (props) => {
     let history = useHistory();
 
@@ -87,7 +88,6 @@ const CoinLiveData = (props) => {
                     </div>
                 </div>
                 {currentChart === "candle-chart" ? <TradingChart symbol={symbol} name={name} /> : <TradingChartArea symbol={symbol} name={name} />}
-                {/* <div className="col-sm-12 col-md-6"></div> */}
             </div >
         </div >
     )
