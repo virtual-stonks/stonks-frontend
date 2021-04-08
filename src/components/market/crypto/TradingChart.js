@@ -30,7 +30,6 @@ const TradingChart = (props) => {
 
                 setHistoricalData(hData);
                 setIsUpdated(true);
-                console.log(historicalData)
             })
             .catch((err) => {
                 console.log(err);
@@ -97,7 +96,6 @@ const TradingChart = (props) => {
             wickUpColor: '#00ff00',
         });
 
-        console.log('hi');
         candleSeries.setData(historicalData);
 
         let ws = null;// websocket variable
@@ -117,7 +115,6 @@ const TradingChart = (props) => {
 
         ws.onmessage = e => {
             const value = JSON.parse(e.data);
-            console.log(value)
             const {
                 t: unixTime,
                 c: lastPrice,

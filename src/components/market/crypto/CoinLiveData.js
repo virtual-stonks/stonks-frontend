@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import moment from "moment"
 import TradingChart from './TradingChart';
 import TradingChartArea from './TradingChartArea';
+import BuyModal from './BuyModal';
 const CoinLiveData = (props) => {
     let history = useHistory();
 
@@ -27,7 +28,10 @@ const CoinLiveData = (props) => {
     const image = props.image;
     let unixEpoch = new Date().getTime();
     const [currentChart, setCurrentChart] = useState("candle-chart")
-
+    const buy_sell_payload = {
+        name,
+        symbol
+    }
 
     return (
         <div className="container black-bg text-white" >
@@ -77,8 +81,8 @@ const CoinLiveData = (props) => {
                             <li class="list-group-item black-bg">Total Traded Volume: {Number(totalTradedAssetVolume).toFixed(3).toLocaleString()}</li>
                         </ul>
                         <div class="card-body">
-                            <button type="button" class="btn btn-success m-1">BUY</button>
-                            <button type="button" class="btn btn-danger m-1">SELL</button>
+                            <BuyModal buttonLabel={"BUY"} className={"success"} buy_sell_payload={buy_sell_payload} ltp={Number(lastPrice).toFixed(3).toLocaleString()} />
+                            <BuyModal buttonLabel={"SELL"} className={"danger"} buy_sell_payload={buy_sell_payload} ltp={Number(lastPrice).toFixed(3).toLocaleString()} />
                         </div>
                     </div>
                 </div>
