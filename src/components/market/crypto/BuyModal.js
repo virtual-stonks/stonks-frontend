@@ -76,17 +76,44 @@ const BuyModal = (props) => {
                     });
                 });
         } else if (typestring === "SELL") {
-            notify("error", "SELL success!", {
-                position: "top-right",
-                autoClose: 1500,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
-        }
+            // prepare data
+            stockName = stockName.toUpperCase();
+            qty = Number(qty)
+            price = Number(price)
 
+            // api call
+            StockApi.postStockSell(qty, price, stockName)
+                .then((res) => {
+                    console.log(res);
+                    notify("error", "SELL success!", {
+                        position: "top-right",
+                        autoClose: 1500,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                })
+                .catch((error) => {
+                    console.log('failed', error);
+
+                    let msg = "SELL failed!!";
+                    if (error.response) {
+                        console.log(error.response.data.msg); // => the response payload 
+                        msg = error.response.data.msg;
+                    }
+                    notify("warning", msg, {
+                        position: "top-right",
+                        autoClose: 1500,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                });
+        }
     }
 
     return (
