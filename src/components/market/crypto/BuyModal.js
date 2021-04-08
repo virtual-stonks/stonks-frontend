@@ -1,6 +1,6 @@
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,10 +20,19 @@ const BuyModal = (props) => {
     } = buy_sell_payload;
 
     const [modal, setModal] = useState(false);
+    const [post, setPost] = useState({ qty: 1 })
+    const [wallet, setWallet] = useState(0);
+
+    useEffect(() => {
+        getWallet();
+    }, [])
 
     const toggle = () => setModal(!modal);
-
-    const [post, setPost] = useState({ qty: 1 })
+    const getWallet = () => {
+        StockApi.getStockWallet()
+            .then((res) => setWallet(res.data.wallet))
+            .catch((error) => console.log(error))
+    }
 
     const notify = (toast_type, text, stylesheet) => {
         if (toast_type === "success")
@@ -56,6 +65,7 @@ const BuyModal = (props) => {
                         draggable: true,
                         progress: undefined,
                     });
+                    getWallet()
                 })
                 .catch((error) => {
                     console.log('failed', error);
@@ -94,6 +104,7 @@ const BuyModal = (props) => {
                         draggable: true,
                         progress: undefined,
                     });
+                    getWallet()
                 })
                 .catch((error) => {
                     console.log('failed', error);
@@ -114,6 +125,8 @@ const BuyModal = (props) => {
                     });
                 });
         }
+
+
     }
 
     return (
@@ -141,11 +154,15 @@ const BuyModal = (props) => {
                                 readOnly
                             />
                         </div>
-                        {/* <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div> */}
-                        {/* <button type="submit" class="btn btn-primary">Submit</button> */}
+                        <div class="form-group">
+                            Wallet
+                            <i
+                                className="fa fas fa-sync p-2"
+                                onClick={() => getWallet()}
+                                style={{ cursor: "pointer" }}
+                            />
+                            <label class="form-check-label" for="exampleCheck1">{wallet}</label>
+                        </div>
                     </form>
                 </ModalBody>
                 <ModalFooter>
