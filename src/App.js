@@ -6,16 +6,17 @@ import Navbar from './components/Navbar'
 import Dashboard from './components/Dashboard'
 import Crypto from './components/market/crypto/Crypto';
 import CoinLive from './components/market/crypto/CoinLive';
+import Holdings from './components/holdings/Holdings';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Switch>
-        {/* <Route exact path="/market/crypto" component={Crypto} /> */}
-        <Route exact path="/" component={Crypto} />
+        <Route exact path="/market/crypto" component={Crypto} />
         <Route exact path="/live/crypto" component={CoinLive} />
-        {/* <Route exact path="/live/crypto" component={Dashboard} /> */}
+        <Route exact path="/holdings" component={Holdings} />
+        <Route exact path="/" component={Dashboard} />
       </Switch>
     </div>
   )

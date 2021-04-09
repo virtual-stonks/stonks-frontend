@@ -2,14 +2,14 @@ import axios from 'axios'
 
 
 class StockApi {
+    token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FidWpAZ21haWwuY29tIiwiaWQiOiI2MDZlYWRhZjUxMWI4NTNiZmNjZTg0YjYifSwiaWF0IjoxNjE3OTY3NjI5LCJleHAiOjE2MTgwNTQwMjl9.A3EIPmZocdwWRM-2SH8r33Ta76xi1WJqcSasiMpNRT8";
 
     getStockWallet() {
         console.log('executed getStockWallet');
         const url = "http://localhost:5000/api/stock/wallet";
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FidWpAZ21haWwuY29tIiwiaWQiOiI2MDZlYWRhZjUxMWI4NTNiZmNjZTg0YjYifSwiaWF0IjoxNjE3ODY2MTU5LCJleHAiOjE2MTc5NTI1NTl9.pxV8v6RZe9SQvqygr63eKHpeUBabIup9-dxFLX18dMA";
         return axios.get(url, {
             headers: {
-                'x-auth-token': `${token}`
+                'x-auth-token': `${this.token}`
             }
         })
     }
@@ -17,10 +17,9 @@ class StockApi {
     getStockHolding() {
         console.log('executed getStockHolding');
         const url = "http://localhost:5000/api/stock/holdings";
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FidWpAZ21haWwuY29tIiwiaWQiOiI2MDZlYWRhZjUxMWI4NTNiZmNjZTg0YjYifSwiaWF0IjoxNjE3ODY2MTU5LCJleHAiOjE2MTc5NTI1NTl9.pxV8v6RZe9SQvqygr63eKHpeUBabIup9-dxFLX18dMA";
         return axios.get(url, {
             headers: {
-                'x-auth-token': `${token}`
+                'x-auth-token': `${this.token}`
             }
         })
     }
@@ -29,7 +28,6 @@ class StockApi {
         console.log('executed postStockBuy');
         console.log(qty, price, stockName);
         const url = "http://localhost:5000/api/stock/buy";
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FidWpAZ21haWwuY29tIiwiaWQiOiI2MDZlYWRhZjUxMWI4NTNiZmNjZTg0YjYifSwiaWF0IjoxNjE3ODY2MTU5LCJleHAiOjE2MTc5NTI1NTl9.pxV8v6RZe9SQvqygr63eKHpeUBabIup9-dxFLX18dMA";
         return axios.post(url, null, {
             params: {
                 qty,
@@ -37,7 +35,7 @@ class StockApi {
                 stockName,
             },
             headers: {
-                'x-auth-token': `${token}`
+                'x-auth-token': `${this.token}`
             }
         })
     }
@@ -46,7 +44,6 @@ class StockApi {
         console.log('executed postStockSell');
         console.log(qty, price, stockName);
         const url = "http://localhost:5000/api/stock/sell";
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FidWpAZ21haWwuY29tIiwiaWQiOiI2MDZlYWRhZjUxMWI4NTNiZmNjZTg0YjYifSwiaWF0IjoxNjE3ODY2MTU5LCJleHAiOjE2MTc5NTI1NTl9.pxV8v6RZe9SQvqygr63eKHpeUBabIup9-dxFLX18dMA";
         return axios.post(url, null, {
             params: {
                 qty,
@@ -54,7 +51,7 @@ class StockApi {
                 stockName,
             },
             headers: {
-                'x-auth-token': `${token}`
+                'x-auth-token': `${this.token}`
             }
         })
     }

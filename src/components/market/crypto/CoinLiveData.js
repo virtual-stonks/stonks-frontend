@@ -8,7 +8,6 @@ import BuyModal from './BuyModal';
 import { Button } from 'reactstrap';
 const CoinLiveData = (props) => {
     let history = useHistory();
-
     const {
         e: eventType,
         E: unixTime,
@@ -49,7 +48,7 @@ const CoinLiveData = (props) => {
                                         className="far fa-arrow-alt-circle-left"
                                         onClick={() => history.push(
                                             {
-                                                pathname: `/`,
+                                                pathname: `/market/crypto`,
                                             }
                                         )}
                                     >
