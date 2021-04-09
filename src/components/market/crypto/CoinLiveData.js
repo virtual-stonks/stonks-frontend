@@ -24,13 +24,15 @@ const CoinLiveData = (props) => {
         v: totalTradedAssetVolume,
         n: totalTrades
     } = props.data;
-    const { name, symbol } = props.symbol;
+    const symbol = props.symbol;
     const image = props.image;
+    const name = props.fullName;
     let unixEpoch = new Date().getTime();
     const [currentChart, setCurrentChart] = useState("candle-chart")
     const buy_sell_payload = {
         name,
-        symbol
+        symbol,
+        image
     }
 
     return (

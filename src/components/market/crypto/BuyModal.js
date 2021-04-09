@@ -16,7 +16,7 @@ const BuyModal = (props) => {
     } = props;
 
     const {
-        name, symbol
+        name, symbol, image
     } = buy_sell_payload;
 
     const [modal, setModal] = useState(false);
@@ -44,7 +44,7 @@ const BuyModal = (props) => {
     }
 
     const sendOrder = (typestring, payload) => {
-        let { qty, price, stockName } = payload;
+        let { qty, price, stockName, stockFullName, image } = payload;
 
         if (typestring === "BUY") {
             // prepare data
@@ -53,7 +53,7 @@ const BuyModal = (props) => {
             price = Number(price)
 
             // api call
-            StockApi.postStockBuy(qty, price, stockName)
+            StockApi.postStockBuy(qty, price, stockName, stockFullName, image)
                 .then((res) => {
                     console.log(res);
                     notify("success", "BUY success!", {
@@ -92,7 +92,7 @@ const BuyModal = (props) => {
             price = Number(price)
 
             // api call
-            StockApi.postStockSell(qty, price, stockName)
+            StockApi.postStockSell(qty, price, stockName, stockFullName, image)
                 .then((res) => {
                     console.log(res);
                     notify("error", "SELL success!", {
@@ -125,7 +125,6 @@ const BuyModal = (props) => {
                     });
                 });
         }
-
 
     }
 
@@ -171,7 +170,8 @@ const BuyModal = (props) => {
                             qty: post.qty,
                             stockFullName: name,
                             stockName: symbol,
-                            price: ltp
+                            price: ltp,
+                            image
                         })}>{buttonLabel}
                     </Button>{' '}
                     <Button color="secondary" onClick={toggle}>Cancel</Button>

@@ -24,10 +24,11 @@ class StockApi {
         })
     }
 
-    postStockBuy(qty, price, stockName) {
+    postStockBuy(qty, price, stockName, stockFullName, image) {
         console.log('executed postStockBuy');
         console.log(qty, price, stockName);
         const url = "http://localhost:5000/api/stock/buy";
+        const body = { stockFullName, image }
         return axios.post(url, null, {
             params: {
                 qty,
@@ -40,7 +41,7 @@ class StockApi {
         })
     }
 
-    postStockSell(qty, price, stockName) {
+    postStockSell(qty, price, stockName, stockFullName, image) {
         console.log('executed postStockSell');
         console.log(qty, price, stockName);
         const url = "http://localhost:5000/api/stock/sell";

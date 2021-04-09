@@ -9,6 +9,7 @@ const CoinLive = () => {
 
     const [coindata, setCoindata] = useState({});
     const [symbolID, setSymbolID] = useState({});
+    const [fullName, setFullName] = useState("");
     const [imageID, setimageID] = useState();
     const [loading, setLoading] = useState(true);
     let cnt = 0;
@@ -18,8 +19,9 @@ const CoinLive = () => {
         console.log(location.state.detail);
 
         const { name, symbol, image } = location.state.detail;
-        setSymbolID(location.state.detail);
-        setimageID(location.state.detail.image);
+        setSymbolID(symbol);
+        setimageID(image);
+        setFullName(name);
         let ws = null;// websocket variable
         let miniTickerString = null;// binance miniticker string
 
@@ -51,7 +53,7 @@ const CoinLive = () => {
 
     return (
         <>
-            { loading ? <Spinner /> : <CoinLiveData data={coindata} symbol={symbolID} image={imageID} loading={loading} />}
+            { loading ? <Spinner /> : <CoinLiveData data={coindata} symbol={symbolID} image={imageID} fullName={fullName} loading={loading} />}
         </>
     )
 }
