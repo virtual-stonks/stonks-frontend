@@ -90,7 +90,7 @@ const Crypto = () => {
                                 className="fa fa-fw fa-sort"
                                 onClick={() => sortBy("symbol")}
                                 style={{ cursor: "pointer" }}
-                            />
+                                />
                         </th>
                         <th scope="col"
                             style={{ color: "#00ff00" }}

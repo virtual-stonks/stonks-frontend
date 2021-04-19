@@ -36,7 +36,8 @@ const Coin = (props) => {
                         )}
                     >
                         <i class="fas fa-money-check-alt" style={{ color: "#00ff00" }} ></i>
-                    </button></td>
+                    </button>
+                </td>
             </tr>
         </>
     )

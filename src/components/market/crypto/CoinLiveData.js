@@ -5,9 +5,9 @@ import moment from "moment"
 import TradingChart from './TradingChart';
 import TradingChartArea from './TradingChartArea';
 import BuyModal from './BuyModal';
+import { Button } from 'reactstrap';
 const CoinLiveData = (props) => {
     let history = useHistory();
-
     const {
         e: eventType,
         E: unixTime,
@@ -24,13 +24,15 @@ const CoinLiveData = (props) => {
         v: totalTradedAssetVolume,
         n: totalTrades
     } = props.data;
-    const { name, symbol } = props.symbol;
+    const symbol = props.symbol;
     const image = props.image;
+    const name = props.fullName;
     let unixEpoch = new Date().getTime();
     const [currentChart, setCurrentChart] = useState("candle-chart")
     const buy_sell_payload = {
         name,
-        symbol
+        symbol,
+        image
     }
 
     return (
@@ -48,7 +50,7 @@ const CoinLiveData = (props) => {
                                         className="far fa-arrow-alt-circle-left"
                                         onClick={() => history.push(
                                             {
-                                                pathname: `/`,
+                                                pathname: `/market/crypto`,
                                             }
                                         )}
                                     >
@@ -87,7 +89,6 @@ const CoinLiveData = (props) => {
                     </div>
                 </div>
                 {currentChart === "candle-chart" ? <TradingChart symbol={symbol} name={name} /> : <TradingChartArea symbol={symbol} name={name} />}
-                {/* <div className="col-sm-12 col-md-6"></div> */}
             </div >
         </div >
     )

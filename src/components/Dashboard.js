@@ -6,7 +6,7 @@ function Dashboard(props) {
     return (
         <div>
             <div className="container">
-                <h2>Hi, Varun</h2>
+                <h2>Hi, Big Bull</h2>
             </div>
         </div>
     )

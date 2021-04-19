@@ -10,10 +10,10 @@ function Navbar(props) {
                 <Link className="navbar-brand" to="/">
                     Dashboard
                 </Link>
-                <Link className="navbar-brand" to="/">
-                    Stocks
+                <Link className="navbar-brand" to="/market/crypto">
+                    Market
                 </Link>
-                <Link className="navbar-brand" to="/">
+                <Link className="navbar-brand" to="/holdings">
                     Holdings
                 </Link>
                 <Link className="navbar-brand" to="/">
