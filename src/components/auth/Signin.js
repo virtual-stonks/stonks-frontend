@@ -20,15 +20,6 @@ export default function Signin() {
     console.log(emailRef.current.value);
     console.log(passwordRef.current.value);
 
-    // await login(emailRef.current.value, passwordRef.current.value).then(
-    //   (result) => {
-    //     // console.log(result);
-    //     history.push('/');
-    //   },
-    //   (err) => setError(err.message)
-    // );
-
-    // await axios.get('http://localhost:5000/').then(alert, alert);
 
     setLoading(false);
   }
