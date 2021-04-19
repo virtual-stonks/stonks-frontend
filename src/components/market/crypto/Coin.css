@@ -1,0 +1,23 @@
+.crypto-text {  
+    text-align: center;
+}
+
+.crypto-img{
+    height: 30px;
+    width: 30px;    
+}
+.robinhood-green{
+    color: "#00ff00"
+}
+
+.robinhood-yellow{
+    color: rgba(255, 217, 2, 0.945)
+}
+
+.push-right {
+    float: right;
+}
+
+.black-bg{
+    background-color: rgb(58, 53, 53);
+}
