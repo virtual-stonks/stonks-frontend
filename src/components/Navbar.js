@@ -21,28 +21,28 @@ function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul className="navbar-nav row">
             <li className="nav-item col">
-              <Link className="navbar-brand text-light" to="/">
+              <Link className="navbar-brand text-light" to="/profile">
                 Profile
               </Link>
             </li>
             <li className="nav-item col">
-              <Link className="navbar-brand text-light" to="/Dashboard">
+              <Link className="navbar-brand text-light" to="/">
                 Dashboard
               </Link>
             </li>
             <li className="nav-item col">
-              <Link className="navbar-brand text-light" to="/">
+              <Link className="navbar-brand text-light" to="/market/crypto">
                 Market
               </Link>
             </li>
             <li className="nav-item col">
-              <Link className="navbar-brand text-light" to="/">
+              <Link className="navbar-brand text-light" to="/holdings">
                 Holdings
               </Link>
             </li>
             <li className="nav-item col">
-              <Link className="navbar-brand text-light" to="/">
-                Wallet
+              <Link className="navbar-brand text-light" to="/signup">
+                Signup
               </Link>
             </li>
           </ul>
