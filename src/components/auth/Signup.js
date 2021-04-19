@@ -1,16 +1,12 @@
 import { useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-// import { useAuth } from '../../helper/AuthContext';
-// import axios from 'axios';
 
 export default function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const nameRef = useRef();
-  //   const { login } = useAuth();
+  const nameRef = useRef();  
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  // const history = useHistory();
+  const [loading, setLoading] = useState(false);  
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -22,16 +18,6 @@ export default function Signup() {
     console.log(emailRef.current.value);
     console.log(passwordRef.current.value);
 
-    // await login(emailRef.current.value, passwordRef.current.value).then(
-    //   (result) => {
-    //     // console.log(result);
-    //     history.push('/');
-    //   },
-    //   (err) => setError(err.message)
-    // );
-
-    // await axios.get('http://localhost:5000/').then(alert, alert);
-
     setLoading(false);
   }
 
@@ -41,7 +27,7 @@ export default function Signup() {
       style={{ minHeight: '70vh' }}
     >
       <div className="w-100" style={{ maxWidth: '400px' }}>
-        <h2 className="text-center mb-4">Sign In</h2>
+        <h2 className="text-center mb-4">Sign Up</h2>
         {error && (
           <div class="alert alert-danger" role="alert">
             {error}
@@ -100,7 +86,7 @@ export default function Signup() {
           </button>
         </form>
         <div className="w-100 text-center mt-2">
-          Already have an account? <Link to="/singin">Sign In</Link>
+          Already have an account? <Link to="/login">Sign In</Link>
         </div>
       </div>
     </div>

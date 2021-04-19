@@ -16,7 +16,7 @@ function App() {
       <Navbar />
       
       <Switch>      
-        <Route exact path="/signin" component={Signin} />
+        <Route exact path="/login" component={Signin} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/market/crypto" component={Crypto} />
         <Route exact path="/live/crypto" component={CoinLive} />
