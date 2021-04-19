@@ -16,6 +16,9 @@ function Navbar(props) {
                 <Link className="navbar-brand" to="/holdings">
                     Holdings
                 </Link>
+                <Link className="navbar-brand" to="/signup">
+                    Signup
+                </Link>
                 <Link className="navbar-brand" to="/">
                     Orders
                 </Link>
