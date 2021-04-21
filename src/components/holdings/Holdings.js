@@ -2,10 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Table } from 'reactstrap';
 import StockApi from "../api/StockApi"
 import { useHistory } from "react-router-dom";
+import Analysis from './Analysis';
 
 const Holdings = (props) => {
     let history = useHistory();
-    const [holdings, setHoldings] = useState([]);
+    const [holdings, setHoldings] = useState([]);   
+
+    let analysisdata = {
+        total_inv: 0,
+        cur_val: 0,
+        pl: 0
+    }
 
     useEffect(() => {
         StockApi.getStockHolding()
@@ -13,11 +20,12 @@ const Holdings = (props) => {
                 setHoldings(res.data.stocksBucket)
             })
             .catch((err) => console.log(err));
-    }, [])
+    }, [])     
+    
 
     return (
-
-        <Table striped>
+        <>
+        <Table striped dark>
             {console.log(holdings)}
             <thead>
                 <tr>
@@ -41,7 +49,12 @@ const Holdings = (props) => {
                     let n_abp = n_investedVal / n_qty; n_abp = n_abp.toFixed(2);
                     let n_curVal = n_qty * n_ltp; n_curVal = n_curVal.toFixed(2);
                     let n_pl = n_curVal - n_investedVal; n_pl = n_pl.toFixed(2);
-                    let n_pp = n_pl / n_investedVal * 100.0; n_pp = n_pp.toFixed(2);
+                    let n_pp = n_pl / n_investedVal * 100.0; n_pp = n_pp.toFixed(2);                                        
+
+                    analysisdata.total_inv += Number(n_investedVal);
+                    analysisdata.cur_val += Number(n_curVal);
+                    analysisdata.pl += Number(n_pl);
+
                     return <tr key={idx}>
                         <th scope="row">{stockName}</th>
                         <td>{n_qty}</td>
@@ -65,16 +78,20 @@ const Holdings = (props) => {
                                 )}
                             >
                                 <i
-                                    className="fas fa-fw fa-hand-holding-usd"
+                                    className="fas fa-fw fa-hand-holding-usd text-warning"
                                 />
                             </button>
                         </td>
-                    </tr>
+                    </tr>                        
+                                  
                 })
                     : <p> No stocks to show!!</p>
                 }
             </tbody>
         </Table>
+        
+        <Analysis analysisdata={analysisdata} />
+        </>
     );
 }
 
