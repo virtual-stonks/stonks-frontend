@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 class StockApi {
-    token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FidWoyQGdtYWlsLmNvbSIsImlkIjoiNjA3ZGM2ZGQxYjIyNWMzMTY4ODkzMmYxIn0sImlhdCI6MTYxODg1NjE1NiwiZXhwIjoxNjE4OTQyNTU2fQ.va4OSSO1tK3DXd0MwG5A-CZ38YbosDhKgJ_2QWncxpo";
+    token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FidWoyQGdtYWlsLmNvbSIsImlkIjoiNjA3ZGM2ZGQxYjIyNWMzMTY4ODkzMmYxIn0sImlhdCI6MTYxOTAxNzYxNCwiZXhwIjoxNjE5MTA0MDE0fQ._CS1x0n6-HrCdvSc25IncZt_LzpXKtoQfttwoUGIXSI";
 
     getStockWallet() {
         console.log('executed getStockWallet');
