@@ -1,14 +1,11 @@
 import React from 'react'
+import Test from './test/Test';
 
 function Dashboard(props) {
     
 
     return (
-        <div>
-            <div className="container">
-                <h2>Hi, Big Bull</h2>
-            </div>
-        </div>
+        <Test />
     )
 }
 
