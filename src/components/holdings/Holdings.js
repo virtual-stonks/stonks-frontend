@@ -19,8 +19,24 @@ const Holdings = (props) => {
 
     const handleMessage = (msg) => {
         const stream = msg.s;
-        let val = Number(msg.c);
-        document.getElementById(`streams_${stream}`).innerText = val.toFixed(3);
+        let ltp = Number(msg.c);        
+
+        let qty = document.getElementById(`streams_${stream}_qty`).innerText;
+        qty = Number(qty);
+
+        let cur_val = qty * ltp;
+
+        let inv_val = document.getElementById(`streams_${stream}_invval`).innerText;
+        inv_val = Number(inv_val);
+
+        let pl = (cur_val - inv_val);
+        let plp = pl / inv_val * 100.0 ;
+
+        console.log(qty, ltp, cur_val, inv_val, plp);
+        document.getElementById(`streams_${stream}`).innerText = ltp.toFixed(3);
+        document.getElementById(`streams_${stream}_currval`).innerText = cur_val.toFixed(3);
+        document.getElementById(`streams_${stream}_pl`).innerText = pl.toFixed(3);
+        document.getElementById(`streams_${stream}_plp`).innerText = plp.toFixed(3) + "%";
     }
 
     useEffect(() => {
@@ -97,6 +113,7 @@ const Holdings = (props) => {
                                 style={{ cursor: "pointer" }}
                             />
                         </th>
+                        <th>Inv Val</th>
                         <th>Cur Val</th>
                         <th>P&L</th>
                         <th>Net Profit</th>
@@ -122,15 +139,13 @@ const Holdings = (props) => {
                         const tickerstring = "streams_" + stockName.toUpperCase() + "USDT";
                         return <tr key={idx}>
                             <th scope="row">{stockName}</th>
-                            <td>{n_qty}</td>
+                            <td id={tickerstring + "_qty"}>{n_qty}</td>
                             <td>{n_abp}</td>
                             <td id={tickerstring} className="text-warning">{n_ltp}</td>
-                            <td>{n_curVal}</td>
-                            <td style={{ color: `${n_pl < 0 ? "red" : "#07ff00"}` }}>{n_pl}</td>
-                            <td style={{ color: `${n_pp < 0 ? "red" : "#07ff00"}` }}>{n_pp}%</td>
-                            {/* <td style={{ color: "#000000" }}><i
-                            className="fas fa-fw fa-hand-holding-usd"
-                        /></td> */}
+                            <td id={tickerstring + "_invval"}>{n_investedVal}</td>
+                            <td id={tickerstring + "_currval"}>{n_curVal}</td>
+                            <td id={tickerstring + "_pl"} style={{ color: `${n_pl < 0 ? "red" : "#07ff00"}` }} >{n_pl}</td>
+                            <td id={tickerstring + "_plp"} style={{ color: `${n_pp < 0 ? "red" : "#07ff00"}` }}>{n_pp}%</td>                         
                             <td>
                                 <button
                                     type="button"
