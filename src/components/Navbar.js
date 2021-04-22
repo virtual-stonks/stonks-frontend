@@ -41,6 +41,11 @@ function Navbar(props) {
               </Link>
             </li>
             <li className="nav-item col">
+              <Link className="navbar-brand text-light" to="/history">
+                History
+              </Link>
+            </li>
+            <li className="nav-item col">
               <Link className="navbar-brand text-light" to="/signup">
                 Signup
               </Link>
