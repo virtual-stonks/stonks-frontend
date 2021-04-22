@@ -17,7 +17,10 @@ const Test = (props) => {
 
         console.log(streams_ethusdt);
         // streams_ethusdt.innerHTML = msg.c;
-        document.getElementById('streams_ethusdt').innerText = msg.c;
+        if(stream === "ETHUSDT")
+            document.getElementById('streams_ETHUSDT').innerText = Number(msg.c);
+        else
+            document.getElementById('streams_BNBUSDT').innerText = msg.c;
     }
 
     useEffect(() => {
@@ -69,7 +72,8 @@ const Test = (props) => {
             <span id="totalstreams"></span> streams tracked<br />
                 Total traded base asset volume:<br />
             <div ref={streams_bnbusdt}></div>
-            <div id="streams_ethusdt"></div>
+            <div id="streams_ETHUSDT">ETHUSDT</div>
+            <div id="streams_BNBUSDT">BNBUSDT</div>
         </div>
     )
 }

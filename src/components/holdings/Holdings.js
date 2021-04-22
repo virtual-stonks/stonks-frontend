@@ -8,11 +8,18 @@ import { Card, Button, CardTitle, Badge } from 'reactstrap';
 const Holdings = (props) => {
     let history = useHistory();
     const [holdings, setHoldings] = useState([]);
+    const [stocklist, setStocklist] = useState([]);
 
     let analysisdata = {
         total_inv: 0,
         cur_val: 0,
         pl: 0
+    }
+
+    const handleMessage = (msg) => {
+        const stream = msg.s;
+        let val = Number(msg.c);
+        document.getElementById(`streams_${stream}`).innerText = val.toFixed(3);
     }
 
     useEffect(() => {
@@ -21,19 +28,62 @@ const Holdings = (props) => {
                 setHoldings(res.data.stocksBucket)
             })
             .catch((err) => console.log(err));
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        let ws = null;// websocket variable
+        StockApi.getTickerlist()
+            .then((res) => {
+                setStocklist(res.data)
+                // let streams = [
+                //     "ethusdt@miniTicker", "bnbusdt@miniTicker",
+                // ];
+                console.log(res.data);
+                let streams = res.data;
+                ws = new WebSocket("wss://stream.binance.com:9443/ws/" + streams.join('/'));
+
+                ws.onopen = () => {
+                    console.log(`Socket connected! to Binance`);
+                };
+
+                ws.onmessage = (evt) => {
+                    try {
+                        let msgs = JSON.parse(evt.data);
+                        console.log(msgs);
+                        if (Array.isArray(msgs)) {
+                            for (let msg of msgs) {
+                                handleMessage(msg);
+                            }
+                        } else {
+                            handleMessage(msgs)
+                        }
+                    } catch (e) {
+                        console.log('Unknown message: ' + evt.data, e);
+                    }
+                }
+
+            })
+            .catch((err) => console.log(err));
+
+        return () => {
+            console.log(`Socket disonnected! from Binance`);
+            ws.close();
+        };
+
+    }, []);
 
 
     return (
         <>
             <Table striped dark>
                 {console.log(holdings)}
+                {console.log('hi', stocklist)}
                 <thead>
                     <tr>
                         <th>Instrument</th>
                         <th>Qty</th>
                         <th>Avg Cost</th>
-                        <th>LTP
+                        <th className="text-warning">LTP
                             <i
                                 className="fa fas fa-sync p-2"
                                 onClick={() => console.log('click')}
@@ -66,7 +116,7 @@ const Holdings = (props) => {
                             <th scope="row">{stockName}</th>
                             <td>{n_qty}</td>
                             <td>{n_abp}</td>
-                            <td>{n_ltp}</td>
+                            <td id={"streams_" + stockName.toUpperCase() + "USDT"} className="text-warning">{n_ltp}</td>
                             <td>{n_curVal}</td>
                             <td style={{ color: `${n_pl < 0 ? "red" : "#07ff00"}` }}>{n_pl}</td>
                             <td style={{ color: `${n_pp < 0 ? "red" : "#07ff00"}` }}>{n_pp}%</td>

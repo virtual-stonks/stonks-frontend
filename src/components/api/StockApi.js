@@ -2,11 +2,21 @@ import axios from 'axios'
 
 
 class StockApi {
-    token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FidWoyQGdtYWlsLmNvbSIsImlkIjoiNjA3ZGM2ZGQxYjIyNWMzMTY4ODkzMmYxIn0sImlhdCI6MTYxOTAxNzYxNCwiZXhwIjoxNjE5MTA0MDE0fQ._CS1x0n6-HrCdvSc25IncZt_LzpXKtoQfttwoUGIXSI";
+    token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FidWoyQGdtYWlsLmNvbSIsImlkIjoiNjA3ZGM2ZGQxYjIyNWMzMTY4ODkzMmYxIn0sImlhdCI6MTYxOTA2NDAzNiwiZXhwIjoxNjE5MTUwNDM2fQ.l9LrdlO4nQ9vNNcNDZLY2sOhlhyirvPGxjC3D3WXX9c";
 
     getStockWallet() {
         console.log('executed getStockWallet');
         const url = "http://localhost:5000/api/stock/wallet";
+        return axios.get(url, {
+            headers: {
+                'x-auth-token': `${this.token}`
+            }
+        })
+    }
+
+    getTickerlist(){
+        console.log('executed getTickerlist');
+        const url = "http://localhost:5000/api/stock/tickerlist";
         return axios.get(url, {
             headers: {
                 'x-auth-token': `${this.token}`
