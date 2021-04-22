@@ -5,6 +5,7 @@ import "./Coin.css"
 import numeral from "numeral"
 import Spinner from "../../utils/Spinner"
 import { crypto_ticks } from "../../utils/crypto.js"
+import ExternalApi from "../../api/ExternalApi"
 
 const Crypto = () => {
     const [crypto, setCrypto] = useState([]);
@@ -24,11 +25,9 @@ const Crypto = () => {
     const [cryptoticker, setCryptoticker] = useState(crypto_ticks());
     useEffect(() => {
         console.log('run');       
-        axios
-            .get(
-                'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=1000&page=1&sparkline=false'
-            )
+        ExternalApi.getCoinslist()
             .then(res => {
+                console.log(res.data);
                 setCrypto(res.data);
                 setLoading(false);
             })
@@ -36,7 +35,7 @@ const Crypto = () => {
     }, []);
 
     const handleMessage = (msg) => {
-        console.log(msg);
+        // console.log(msg);
         const stream = msg.s;
         let val = Number(msg.c);
         document.getElementById(`streams_${stream}`).innerText = val.toFixed(3);
