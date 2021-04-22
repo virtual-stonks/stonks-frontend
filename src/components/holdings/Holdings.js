@@ -9,6 +9,7 @@ const Holdings = (props) => {
     let history = useHistory();
     const [holdings, setHoldings] = useState([]);
     const [stocklist, setStocklist] = useState([]);
+    const [loaded, setIsloaded] = useState(false);
 
     let analysisdata = {
         total_inv: 0,
@@ -26,6 +27,7 @@ const Holdings = (props) => {
         StockApi.getStockHolding()
             .then((res) => {
                 setHoldings(res.data.stocksBucket)
+                setIsloaded(true);
             })
             .catch((err) => console.log(err));
     }, []);
@@ -35,10 +37,6 @@ const Holdings = (props) => {
         StockApi.getTickerlist()
             .then((res) => {
                 setStocklist(res.data)
-                // let streams = [
-                //     "ethusdt@miniTicker", "bnbusdt@miniTicker",
-                // ];
-                console.log(res.data);
                 let streams = res.data;
                 ws = new WebSocket("wss://stream.binance.com:9443/ws/" + streams.join('/'));
 
@@ -48,8 +46,7 @@ const Holdings = (props) => {
 
                 ws.onmessage = (evt) => {
                     try {
-                        let msgs = JSON.parse(evt.data);
-                        console.log(msgs);
+                        let msgs = JSON.parse(evt.data);                        
                         if (Array.isArray(msgs)) {
                             for (let msg of msgs) {
                                 handleMessage(msg);
@@ -72,7 +69,17 @@ const Holdings = (props) => {
 
     }, []);
 
+    const getCurVal = (tickerstring) => {
+        if(document.getElementById(tickerstring).innerText != null){
+            let val = document.getElementById(tickerstring).innerText;
+        // val = val.toFixed(3);
+        console.log(val);
+        return "2";
+        }
+        return null;
+    }
 
+    if(loaded)
     return (
         <>
             <Table striped dark>
@@ -112,11 +119,12 @@ const Holdings = (props) => {
                         analysisdata.cur_val += Number(n_curVal);
                         analysisdata.pl += Number(n_pl);
 
+                        const tickerstring = "streams_" + stockName.toUpperCase() + "USDT";
                         return <tr key={idx}>
                             <th scope="row">{stockName}</th>
                             <td>{n_qty}</td>
                             <td>{n_abp}</td>
-                            <td id={"streams_" + stockName.toUpperCase() + "USDT"} className="text-warning">{n_ltp}</td>
+                            <td id={tickerstring} className="text-warning">{n_ltp}</td>
                             <td>{n_curVal}</td>
                             <td style={{ color: `${n_pl < 0 ? "red" : "#07ff00"}` }}>{n_pl}</td>
                             <td style={{ color: `${n_pp < 0 ? "red" : "#07ff00"}` }}>{n_pp}%</td>
@@ -153,6 +161,9 @@ const Holdings = (props) => {
             { holdings.length > 0 ? < Analysis analysisdata={analysisdata} /> : <> </>}
         </>
     );
+
+    else 
+        return <> Wow! such empty </>
 }
 
 export default Holdings;

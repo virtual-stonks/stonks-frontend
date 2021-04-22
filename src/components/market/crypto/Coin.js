@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 const Coin = (props) => {
     const { name, price, symbol, image, priceChange, marketCap, low_24h, high_24h, total_volume } = props;
     let history = useHistory();
+    const tickerstring = "streams_" + symbol.toUpperCase() + "USDT";
     return (
         <>
             <tr>
@@ -12,7 +13,7 @@ const Coin = (props) => {
                 <th scope="row">{name}</th>
                 <td>{symbol.toUpperCase()}</td>
                 <td>$ {numeral(marketCap).format("0.0a")}</td>
-                <td>$ {numeral(price).format("0.0a")}</td>
+                <td id={tickerstring} className="text-warning">{numeral(price).format("0.0a")}</td>
                 <td>$ {numeral(low_24h).format("0.0a")}</td>
                 <td>$ {numeral(high_24h).format("0.0a")}</td>
                 <td
