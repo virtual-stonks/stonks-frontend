@@ -203,7 +203,7 @@ const Holdings = (props) => {
                     </tbody>
                 </Table>
 
-                { holdings.length > 0 ? < Analysis analysisdata={analysisdata} /> : <> </>}
+                {/* { holdings.length > 0 ? < Analysis analysisdata={analysisdata} /> : <> </>} */}
             </>
         );
 
