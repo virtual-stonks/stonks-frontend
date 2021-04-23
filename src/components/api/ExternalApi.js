@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 class ExternalApi {
-    token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FidWoyQGdtYWlsLmNvbSIsImlkIjoiNjA3ZGM2ZGQxYjIyNWMzMTY4ODkzMmYxIn0sImlhdCI6MTYxOTA2NDAzNiwiZXhwIjoxNjE5MTUwNDM2fQ.l9LrdlO4nQ9vNNcNDZLY2sOhlhyirvPGxjC3D3WXX9c";
+    token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FidWoyQGdtYWlsLmNvbSIsImlkIjoiNjA3ZGM2ZGQxYjIyNWMzMTY4ODkzMmYxIn0sImlhdCI6MTYxOTE5MTM5NywiZXhwIjoxNjE5Mjc3Nzk3fQ.9eqpLUDTBt3Z8Q5UUzl0VJHm9Wc9Qg5fgEOQZYHYB68";
 
     getCoinslist() {
         console.log('executed getCoinslist');

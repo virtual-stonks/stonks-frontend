@@ -48,11 +48,11 @@ const Profile = () =>  {
           </h4>
           <h4 className="font-weight-light pt-4">
             Wallet Balance :-
-            <span className="pl-3 text-warning">{userdata.wallet.toFixed(2)} coins</span>
+            <span className="pl-3 text-warning">$ {userdata.wallet.toFixed(2)} coins</span>
           </h4>
           <h4 className="font-weight-light pt-4">
             Holdings:
-            <span className="pl-3 text-warning">{userdata.stocksBucket.length} stocks</span>
+            <span className="pl-3 text-warning">{userdata.stocksBucket.length} cryptos</span>
           </h4>
         </div>
       </div>
