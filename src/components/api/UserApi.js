@@ -1,8 +1,9 @@
 import axios from 'axios'
+import {JWT_TOKEN} from "./config"
 
 
 class UserApi {
-    token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FidWoyQGdtYWlsLmNvbSIsImlkIjoiNjA3ZGM2ZGQxYjIyNWMzMTY4ODkzMmYxIn0sImlhdCI6MTYxOTE5MTM5NywiZXhwIjoxNjE5Mjc3Nzk3fQ.9eqpLUDTBt3Z8Q5UUzl0VJHm9Wc9Qg5fgEOQZYHYB68";
+    token = JWT_TOKEN;
 
     getUserDetails() {
         console.log('executed getUserDetails');
