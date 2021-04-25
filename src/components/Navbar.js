@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Navbar(props) {
+  console.log(localStorage.getItem("auth-token"));
   return (
     <div>
       <nav
@@ -41,9 +42,16 @@ function Navbar(props) {
               </Link>
             </li>
             <li className="nav-item col">
-              <Link className="navbar-brand text-light" to="/signup">
-                Signup
-              </Link>
+              {
+                localStorage.getItem("auth-token") ?
+                  <Link className="navbar-brand text-light" onClick={localStorage.removeItem("auth-token")} >
+                    Logout
+                  </Link> :
+                  <Link className="navbar-brand text-light" to="/signup">
+                    Signup
+                  </Link>
+              }
+
             </li>
           </ul>
         </div>

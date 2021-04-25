@@ -1,21 +1,39 @@
-import { useRef, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import axios from 'axios';
+import { useRef, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
 
 export default function Signin() {
   const emailRef = useRef();
-  const passwordRef = useRef();  
-  const [error, setError] = useState('');
+  const passwordRef = useRef();
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    setError('');
+    setError("");
     setLoading(true);
 
     console.log(emailRef.current.value);
     console.log(passwordRef.current.value);
+
+    // try {
+
+    await axios
+      .post("http://localhost:5000/api/user/signin", {
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      })
+      .then(
+        result => {
+          localStorage.setItem("auth-token", result?.data.token);
+          // history.push('/');
+        }
+        // err => setError(err.message)
+      );
+
+    // } catch (err) { err.response.data.message && setError(err.response.data.message) }
 
     setLoading(false);
   }
@@ -23,9 +41,9 @@ export default function Signin() {
   return (
     <div
       className="container d-flex align-items-center justify-content-center"
-      style={{ minHeight: '70vh' }}
+      style={{ minHeight: "70vh" }}
     >
-      <div className="w-100" style={{ maxWidth: '400px' }}>
+      <div className="w-100" style={{ maxWidth: "400px" }}>
         <h2 className="text-center mb-4">Log In</h2>
         {error && (
           <div class="alert alert-danger" role="alert">
