@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Spinner } from "reactstrap";
 import avatar from "../assets/images/avatar.jpg";
+import UserApi from "./api/UserApi"
+import { getUserName }  from "./utils/getUserName"
 
 let crypto = 220;
 let INR = 147;
 let USD = 233;
 
-export function Profile(props) {
-  return (
+const Profile = () =>  {
+
+  const [userdata, setUserdata] = useState();
+  
+  useEffect(() => {
+    UserApi.getUserDetails()
+        .then((res) => {
+            console.log(res.data);
+            setUserdata(res.data)            
+        })
+        .catch((err) => console.log(err));
+  }, [])
+
+  if(userdata)
+    return (  
     <div className="bg-dark">
       <div className="jumbotron text-light bg-dark" style={{ height: "100vh" }}>
         <img
@@ -18,40 +34,32 @@ export function Profile(props) {
             height: "100px",
             borderRadius: "50%",
           }}></img>
-        <h1 className="display-4 pt-3">Varun Das</h1>
-        <hr className="my-4" />
+        <h1 className="display-4 pt-3 text-warning">{userdata.name}</h1>        
         <h3 className="font-weight-light pt-3">Account Details</h3>
         <div className="container text-left">
           <h4 className="font-weight-light pt-5">
-            Username : <span className="pl-3">veedee2000</span>
+            Username : <span className="pl-3 text-warning"> {getUserName(userdata.name)} </span>
           </h4>
           <h4 className="font-weight-light pt-4">
-            Email : <span className="pl-3">dummy@gmail.com</span>
+            Email : <span className="pl-3 text-warning">{userdata.email}</span>
           </h4>
           <h4 className="font-weight-light pt-4">
-            Password : <span className="pl-3">helloStonks</span>
+            Password : <span className="pl-3 text-warning">************</span>
           </h4>
           <h4 className="font-weight-light pt-4">
             Wallet Balance :-
-            <div
-              className="container row"
-              style={{
-                margin: "10px 20px 10px 250px",
-                padding: "5px 20px 5px 20px",
-              }}>
-              <div className="col">CryptoCurrency</div>
-              <div className="col">INR</div>
-              <div className="col">USD</div>
-              <div className="w-100"></div>
-              <div className="col pt-3">{crypto}</div>
-              <div className="col pt-3">{INR}</div>
-              <div className="col pt-3">{USD}</div>
-            </div>
+            <span className="pl-3 text-warning">$ {userdata.wallet.toFixed(2)} coins</span>
+          </h4>
+          <h4 className="font-weight-light pt-4">
+            Holdings:
+            <span className="pl-3 text-warning">{userdata.stocksBucket.length} cryptos</span>
           </h4>
         </div>
       </div>
     </div>
   );
+  else
+      return <Spinner />
 }
 
 export default Profile;
