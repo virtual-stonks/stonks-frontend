@@ -1,12 +1,22 @@
 import axios from 'axios'
-
+import {JWT_TOKEN} from "./config"
 
 class StockApi {
-    token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FidWoyQGdtYWlsLmNvbSIsImlkIjoiNjA3ZGM2ZGQxYjIyNWMzMTY4ODkzMmYxIn0sImlhdCI6MTYxODg1NjE1NiwiZXhwIjoxNjE4OTQyNTU2fQ.va4OSSO1tK3DXd0MwG5A-CZ38YbosDhKgJ_2QWncxpo";
+    token = JWT_TOKEN;
 
     getStockWallet() {
         console.log('executed getStockWallet');
         const url = "http://localhost:5000/api/stock/wallet";
+        return axios.get(url, {
+            headers: {
+                'x-auth-token': `${this.token}`
+            }
+        })
+    }
+
+    getTickerlist(){
+        console.log('executed getTickerlist');
+        const url = "http://localhost:5000/api/stock/tickerlist";
         return axios.get(url, {
             headers: {
                 'x-auth-token': `${this.token}`

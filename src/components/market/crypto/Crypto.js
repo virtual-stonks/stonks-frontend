@@ -4,6 +4,8 @@ import Coin from './Coin';
 import "./Coin.css"
 import numeral from "numeral"
 import Spinner from "../../utils/Spinner"
+import { crypto_ticks } from "../../utils/crypto.js"
+import ExternalApi from "../../api/ExternalApi"
 
 const Crypto = () => {
     const [crypto, setCrypto] = useState([]);
@@ -20,18 +22,56 @@ const Crypto = () => {
     const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
-
+    const [cryptoticker, setCryptoticker] = useState(crypto_ticks());
     useEffect(() => {
-        axios
-            .get(
-                'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=1000&page=1&sparkline=false'
-            )
+        console.log('run');       
+        ExternalApi.getCoinslist()
             .then(res => {
+                console.log(res.data);
                 setCrypto(res.data);
                 setLoading(false);
-                console.log(res.data);
             })
             .catch(error => { console.log(error); setError(true) });
+    }, []);
+
+    const handleMessage = (msg) => {
+        // console.log(msg);
+        const stream = msg.s;
+        let val = Number(msg.c);
+        document.getElementById(`streams_${stream}`).innerText = val.toFixed(3);
+    }
+
+    useEffect(() => {
+        let ws = null;// websocket variable
+
+        let streams = cryptoticker;
+        ws = new WebSocket("wss://stream.binance.com:9443/ws/" + streams.join('/'));
+
+        ws.onopen = () => {
+            console.log(`Socket connected! to Binance`);
+        };
+
+        ws.onmessage = (evt) => {
+            try {
+                let msgs = JSON.parse(evt.data);
+                if (Array.isArray(msgs)) {
+                    for (let msg of msgs) {
+                        handleMessage(msg);
+                    }
+                } else {
+                    handleMessage(msgs)
+                }
+            } catch (e) {
+                console.log('Unknown message: ' + evt.data, e);
+            }
+        }
+
+
+        return () => {
+            console.log(`Socket disonnected! from Binance`);
+            ws.close();
+        };
+
     }, []);
 
     const searchCrypto = (data) => {
@@ -91,7 +131,7 @@ const Crypto = () => {
                                 className="fa fa-fw fa-sort"
                                 onClick={() => sortBy("symbol")}
                                 style={{ cursor: "pointer" }}
-                                />
+                            />
                         </th>
                         <th scope="col"
                             style={{ color: "#00ff00" }}
@@ -106,7 +146,7 @@ const Crypto = () => {
                         <th scope="col"
                             style={{ color: "#00ff00" }}
                         >
-                            Price
+                            Price($)
                                 <i
                                 className="fa fa-fw fa-sort"
                                 onClick={() => sortBy("current_price")}
@@ -146,7 +186,7 @@ const Crypto = () => {
                         <th scope="col"
                             style={{ color: "#00ff00" }}
                         >
-                            Traded Volume
+                            Trad.Vol
                                 <i
                                 className="fa fa-fw fa-sort"
                                 onClick={() => sortBy("total_volume")}
