@@ -15,9 +15,8 @@ const CoinLive = () => {
     let cnt = 0;
 
     useEffect(() => {
-        console.log(location.pathname); // result: '/secondpage'
-        console.log(location.state.detail);
-
+        // console.log(location.pathname); // result: '/secondpage'
+        // console.log(location.state.detail);
         const { name, symbol, image } = location.state.detail;
         setSymbolID(symbol);
         setimageID(image);

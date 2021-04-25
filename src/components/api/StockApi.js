@@ -34,6 +34,16 @@ class StockApi {
         })
     }
 
+    getTransactions() {
+        console.log('executed getTransactions');
+        const url = "http://localhost:5000/api/stock/transactions";
+        return axios.get(url, {
+            headers: {
+                'x-auth-token': `${this.token}`
+            }
+        })
+    }
+
     postStockBuy(qty, price, stockName, stockFullName, image) {
         console.log('executed postStockBuy');
         console.log(qty, price, stockName);
