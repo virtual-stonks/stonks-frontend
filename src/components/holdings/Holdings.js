@@ -39,7 +39,7 @@ const Holdings = (props) => {
         let vvv = Number(investedValprev) + Number(cur_val - old_curr_val);
 
         // console.log(analysisdata.cur_val);
-        console.log(investedValprev)
+        // console.log(investedValprev)
         document.getElementById(`streams_${stream}`).innerText = ltp.toFixed(3);
         document.getElementById(`streams_${stream}_currval`).innerText = cur_val.toFixed(3);
 
