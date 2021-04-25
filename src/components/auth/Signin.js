@@ -18,7 +18,7 @@ export default function Signin() {
     console.log(emailRef.current.value);
     console.log(passwordRef.current.value);
 
-    // try {
+    try {
 
     await axios
       .post("http://localhost:5000/api/user/signin", {
@@ -28,12 +28,12 @@ export default function Signin() {
       .then(
         result => {
           localStorage.setItem("auth-token", result?.data.token);
-          // history.push('/');
+          history.push('/');
         }
         // err => setError(err.message)
       );
 
-    // } catch (err) { err.response.data.message && setError(err.response.data.message) }
+    } catch (err) { err.response.data.message && setError(err.response.data.message) }
 
     setLoading(false);
   }
