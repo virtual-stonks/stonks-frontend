@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { Alert } from 'reactstrap';
 
 import AuthApi from "../api/AuthApi"
 
@@ -29,34 +30,46 @@ const Signup = ({ signUp, uid }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ name, email, password });  
-    
-    AuthApi.signUpUser({name, email, password})
-            .then((res) => {
-              console.log(res.data);
-              const token = res.data.token;
-              localStorage.setItem('token', token);              
-            })
-            .catch((err) => {
-              if(err.response){
-                console.log(err.response.data);
-                setErrors(err.response.data.errors);
-              }else{
-                setErrors([err.message])
-              }
-            });
+    console.log({ name, email, password });
+
+    AuthApi.signUpUser({ name, email, password })
+      .then((res) => {
+        console.log(res.data);
+        const token = res.data.token;
+        localStorage.setItem('token', token);
+        history.push(history.push(
+          {
+            pathname: `/`,
+          }
+        ));
+      })
+      .catch((err) => {
+        if (err.response) {
+          console.log(err.response.data);
+          setErrors([...err.response.data.errors]);
+        } else {
+          setErrors([err.message])
+        }
+      });
   };
 
-//   if (uid) return <Redirect to="/about" />;
-//   else
-    return (      
+  // if (errors.length === 0) return <Redirect to="/" />;
+  // else
+  return (
+    <>
+      <div className="container" style={{ width: "50%" }}>
+        {errors.length > 0 && errors.map((err, idx) => {          
+          return <Alert key={idx} color="danger" className="mt-1">
+            {err.msg}
+          </Alert>
+        })}
+      </div>
       <form
         className="container text border border-light p-5 mt-2 text-white"
         autoComplete="off"
         onSubmit={handleSubmit}
-        style={{width: "50%", backgroundColor: "#0c2d1c"}}
+        style={{ width: "50%", backgroundColor: "#0c2d1c" }}
       >
-        {console.log(errors)}
         <label>
           <h4>Sign Up</h4>
         </label>
@@ -90,11 +103,12 @@ const Signup = ({ signUp, uid }) => {
             onChange={handleChange}
           />
         </div>
-        <button type="submit" className="btn btn-dark" style={{backgroundColor: "#7289DA", color: "white"}}>
+        <button type="submit" className="btn btn-dark" style={{ backgroundColor: "#7289DA", color: "white" }}>
           Register
         </button>
       </form>
-    );
+    </>
+  );
 };
 
 
