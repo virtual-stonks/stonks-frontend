@@ -42,7 +42,7 @@ function Navbar(props) {
               </Link>
             </li>
             <li className="nav-item col">
-              {
+              {/* {
                 localStorage.getItem("auth-token") ?
                   <Link className="navbar-brand text-light" onClick={localStorage.removeItem("auth-token")} >
                     Logout
@@ -50,15 +50,20 @@ function Navbar(props) {
                   <Link className="navbar-brand text-light" to="/signup">
                     Signup
                   </Link>
-              }
+              } */}
 
               <Link className="navbar-brand text-light" to="/history">
                 History
               </Link>
             </li>
             <li className="nav-item col">
-              <Link className="navbar-brand text-light" to="/signup">
-                Signup
+              <Link className="navbar-brand text-light" to="/register">
+                Register
+              </Link>
+            </li>
+            <li className="nav-item col">
+              <Link className="navbar-brand text-light" to="/signin">
+                Signin
               </Link>
             </li>
           </ul>

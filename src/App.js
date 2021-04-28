@@ -11,6 +11,7 @@ import Crypto from "./components/market/crypto/Crypto";
 import CoinLive from "./components/market/crypto/CoinLive";
 import Holdings from "./components/holdings/Holdings";
 import History from "./components/History";
+import SignIn from "./components/auth/Signin";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path="/login" component={Signin} />
-        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/register" component={Signup} />
+        <Route exact path="/signin" component={SignIn} />
         <Route exact path="/market/crypto" component={Crypto} />
         <Route exact path="/live/crypto" component={CoinLive} />
         <Route exact path="/holdings" component={Holdings} />
