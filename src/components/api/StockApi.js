@@ -1,15 +1,12 @@
 import axios from 'axios'
-import {JWT_TOKEN} from "./config"
 
-class StockApi {
-    token = JWT_TOKEN;
-
+class StockApi {    
     getStockWallet() {
         console.log('executed getStockWallet');
         const url = "http://localhost:5000/api/stock/wallet";
         return axios.get(url, {
             headers: {
-                'x-auth-token': `${this.token}`
+                'x-auth-token': `${localStorage.getItem('token')}`
             }
         })
     }
@@ -19,7 +16,7 @@ class StockApi {
         const url = "http://localhost:5000/api/stock/tickerlist";
         return axios.get(url, {
             headers: {
-                'x-auth-token': `${this.token}`
+                'x-auth-token': `${localStorage.getItem('token')}`
             }
         })
     }
@@ -29,7 +26,7 @@ class StockApi {
         const url = "http://localhost:5000/api/stock/holdings";
         return axios.get(url, {
             headers: {
-                'x-auth-token': `${this.token}`
+                'x-auth-token': `${localStorage.getItem('token')}`
             }
         })
     }
@@ -39,7 +36,7 @@ class StockApi {
         const url = "http://localhost:5000/api/stock/transactions";
         return axios.get(url, {
             headers: {
-                'x-auth-token': `${this.token}`
+                'x-auth-token': `${localStorage.getItem('token')}`
             }
         })
     }
@@ -56,7 +53,7 @@ class StockApi {
                 stockName,
             },
             headers: {
-                'x-auth-token': `${this.token}`
+                'x-auth-token': `${localStorage.getItem('token')}`
             }
         })
     }
@@ -72,7 +69,7 @@ class StockApi {
                 stockName,
             },
             headers: {
-                'x-auth-token': `${this.token}`
+                'x-auth-token': `${localStorage.getItem('token')}`
             }
         })
     }

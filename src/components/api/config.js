@@ -1,4 +1,4 @@
-const JWT_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FidWo2QGdtYWlsLmNvbSIsImlkIjoiNjA4NjlkYmY3YzA3NzQyMGE0YWExMzNkIn0sImlhdCI6MTYxOTU4Nzg5OSwiZXhwIjoxNjE5Njc0Mjk5fQ.zAGJDG_miy5-2goo-L3opvYGWIVzxedbLB9v8sCINXQ';
+const JWT_TOKEN = localStorage.getItem('token');
 module.exports = {
     JWT_TOKEN
 }

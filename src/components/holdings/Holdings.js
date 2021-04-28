@@ -80,6 +80,7 @@ const Holdings = (props) => {
 
     useEffect(() => {
         let ws = null;// websocket variable
+
         StockApi.getTickerlist()
             .then((res) => {
                 setStocklist(res.data)
@@ -110,7 +111,8 @@ const Holdings = (props) => {
 
         return () => {
             console.log(`Socket disonnected! from Binance`);
-            ws.close();
+            if(ws != null)
+                ws.close();
         };
 
     }, []);

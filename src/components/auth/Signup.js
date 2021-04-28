@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import AuthApi from "../api/AuthApi"
 
@@ -8,6 +9,7 @@ const Signup = ({ signUp, uid }) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  let history = useHistory();
 
   const handleChange = (e) => {
     switch (e.target.id) {
@@ -30,7 +32,11 @@ const Signup = ({ signUp, uid }) => {
     console.log({ name, email, password });  
     
     AuthApi.signUpUser({name, email, password})
-            .then((res) => console.log(res))
+            .then((res) => {
+              console.log(res.data);
+              const token = res.data.token;
+              localStorage.setItem('token', token);              
+            })
             .catch((err) => {
               if(err.response){
                 console.log(err.response.data);
