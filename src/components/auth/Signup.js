@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 
+import AuthApi from "../api/AuthApi"
+
 const Signup = ({ signUp, uid }) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const handleChange = (e) => {
     switch (e.target.id) {
@@ -24,24 +27,35 @@ const Signup = ({ signUp, uid }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log({ email, password });
-    signUp({ email, password });
+    console.log({ name, email, password });  
+    
+    AuthApi.signUpUser({name, email, password})
+            .then((res) => console.log(res))
+            .catch((err) => {
+              if(err.response){
+                console.log(err.response.data);
+                setErrors(err.response.data.errors);
+              }else{
+                setErrors([err.message])
+              }
+            });
   };
 
 //   if (uid) return <Redirect to="/about" />;
 //   else
-    return (
+    return (      
       <form
         className="container text border border-light p-5 mt-2 text-white"
         autoComplete="off"
         onSubmit={handleSubmit}
         style={{width: "50%", backgroundColor: "#0c2d1c"}}
       >
+        {console.log(errors)}
         <label>
           <h4>Sign Up</h4>
         </label>
         <div className="form-group">
-          <label htmlFor="name">Name </label>
+          <label htmlFor="name">Username </label>
           <input
             type="name"
             className="form-control"

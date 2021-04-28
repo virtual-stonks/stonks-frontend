@@ -20,8 +20,7 @@ const SignIn = ({ signIn, uid }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log({ email, password });
-    signIn({ email, password });
+    console.log({ email, password });    
   };
 
   // if (uid) return <Redirect to="/about" />;
