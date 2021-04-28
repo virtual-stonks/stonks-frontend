@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect, Link, useHistory } from "react-router-dom";
+import AuthApi from "../api/AuthApi"
+import { Alert } from 'reactstrap';
 
-const SignIn = ({ signIn, uid }) => {
+const SignIn = ({ isAuth, setIsAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
+  let history = useHistory();  
 
   const handleChange = (e) => {
     switch (e.target.id) {
@@ -20,13 +24,41 @@ const SignIn = ({ signIn, uid }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ email, password });    
+    console.log({ email, password });
+
+    AuthApi.signInUser({ email, password })
+      .then((res) => {
+        console.log(res.data);
+        const token = res.data.token;
+        localStorage.setItem('token', token);
+        setIsAuth(true);
+        history.push(
+          {
+            pathname: `/dashboard`,
+          }
+        );
+      })
+      .catch((err) => {
+        if (err.response) {
+          console.log(err.response.data);
+          setErrors([...err.response.data.errors]);
+        } else {
+          setErrors([err.message])
+        }
+      });
   };
 
   // if (uid) return <Redirect to="/about" />;
   // else
     return (
-      <div>
+      <>
+      <div className="container" style={{ width: "50%" }}>
+        {errors.length > 0 && errors.map((err, idx) => {          
+          return <Alert key={idx} color="danger" className="mt-1">
+            {err.msg}
+          </Alert>
+        })}
+      </div>      
       <form
         className="container text border border-light p-5 mt-2 text-white"
         autoComplete="off"
@@ -63,7 +95,8 @@ const SignIn = ({ signIn, uid }) => {
 
         <p className="m-1">New user ? <Link to="/">Sign Up!</Link></p>        
       </form>
-      </div>
+      
+      </>
     );
 };
 

@@ -19,8 +19,7 @@ const App = () =>  {
     <div className="App">
 
       { isAuth && <Navbar isAuth={isAuth} setIsAuth={setIsAuth} /> }
-      <Switch>
-        <Route exact path="/login" component={Signin} />        
+      <Switch>              
         <Route exact path="/login" component={() => <Signin isAuth={isAuth} setIsAuth={setIsAuth} />} />
         <Route exact path="/market/crypto" component={Crypto} />
         <Route exact path="/live/crypto" component={CoinLive} />
@@ -29,7 +28,6 @@ const App = () =>  {
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/history" component={History} />
         <Route exact path="/" component={() => <Signup isAuth={isAuth} setIsAuth={setIsAuth} />} />
-
         {/* // 404 */}
         <Redirect to='/'/>
       </Switch>

@@ -53,9 +53,8 @@ const Signup = ({isAuth, setIsAuth}) => {
         }
       });
   };
-
-    
-  return (
+  
+    return (
     <>
       <div className="container" style={{ width: "50%" }}>
         {errors.length > 0 && errors.map((err, idx) => {          
@@ -71,7 +70,7 @@ const Signup = ({isAuth, setIsAuth}) => {
         style={{ width: "50%", backgroundColor: "#0c2d1c" }}
       >
         
-          <h1 style={{alignContent: "center"}}>Virtual Stonks</h1>
+          <h1 style={{alignContent: "center"}}>Virtual $tonks</h1>
         
         <label>
           <h4>Sign Up</h4>
