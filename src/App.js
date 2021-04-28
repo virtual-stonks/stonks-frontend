@@ -1,8 +1,8 @@
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
 import Signin from "./components/auth/Signin";
 import Signup from "./components/auth/Signup";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
@@ -13,20 +13,25 @@ import Holdings from "./components/holdings/Holdings";
 import History from "./components/History";
 import SignIn from "./components/auth/Signin";
 
-function App() {
+const App = () =>  {
+  const[isAuth, setIsAuth] = useState(false);
   return (
     <div className="App">
-      <Navbar />
+
+      { isAuth && <Navbar isAuth={isAuth} setIsAuth={setIsAuth} /> }
       <Switch>
-        <Route exact path="/login" component={Signin} />
-        <Route exact path="/register" component={Signup} />
-        <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/login" component={Signin} />        
+        <Route exact path="/login" component={() => <Signin isAuth={isAuth} setIsAuth={setIsAuth} />} />
         <Route exact path="/market/crypto" component={Crypto} />
         <Route exact path="/live/crypto" component={CoinLive} />
         <Route exact path="/holdings" component={Holdings} />
         <Route exact path="/profile" component={Profile} />
-        <Route exact path="/" component={Dashboard} />
+        <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/history" component={History} />
+        <Route exact path="/" component={() => <Signup isAuth={isAuth} setIsAuth={setIsAuth} />} />
+
+        {/* // 404 */}
+        <Redirect to='/'/>
       </Switch>
     </div>
   );

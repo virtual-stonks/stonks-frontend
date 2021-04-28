@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { Alert } from 'reactstrap';
 
 import AuthApi from "../api/AuthApi"
 
-const Signup = ({ signUp, uid }) => {
+const Signup = ({isAuth, setIsAuth}) => {  
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -37,9 +37,10 @@ const Signup = ({ signUp, uid }) => {
         console.log(res.data);
         const token = res.data.token;
         localStorage.setItem('token', token);
+        setIsAuth(true);
         history.push(history.push(
           {
-            pathname: `/`,
+            pathname: `/dashboard`,
           }
         ));
       })
@@ -53,8 +54,7 @@ const Signup = ({ signUp, uid }) => {
       });
   };
 
-  // if (errors.length === 0) return <Redirect to="/" />;
-  // else
+    
   return (
     <>
       <div className="container" style={{ width: "50%" }}>
@@ -70,6 +70,9 @@ const Signup = ({ signUp, uid }) => {
         onSubmit={handleSubmit}
         style={{ width: "50%", backgroundColor: "#0c2d1c" }}
       >
+        
+          <h1 style={{alignContent: "center"}}>Virtual Stonks</h1>
+        
         <label>
           <h4>Sign Up</h4>
         </label>
@@ -105,7 +108,8 @@ const Signup = ({ signUp, uid }) => {
         </div>
         <button type="submit" className="btn btn-dark" style={{ backgroundColor: "#7289DA", color: "white" }}>
           Register
-        </button>
+        </button>        
+          <p className="m-1">Already a user ? <Link to="/login">Sign In!</Link></p>        
       </form>
     </>
   );

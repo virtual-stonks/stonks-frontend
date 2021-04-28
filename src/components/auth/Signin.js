@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 const SignIn = ({ signIn, uid }) => {
   const [email, setEmail] = useState("");
@@ -32,7 +32,8 @@ const SignIn = ({ signIn, uid }) => {
         autoComplete="off"
         onSubmit={handleSubmit}
         style={{width: "50%", backgroundColor: "#0c2d1c"}}
-      >
+      > 
+      <h1 style={{alignContent: "center"}}>Virtual $tonks</h1>
         <label>
           <h4>Sign In</h4>
         </label>
@@ -59,6 +60,8 @@ const SignIn = ({ signIn, uid }) => {
         <button type="submit" className="btn" style={{backgroundColor: "#7289DA", color: "white"}}>
           Log In
         </button>
+
+        <p className="m-1">New user ? <Link to="/">Sign Up!</Link></p>        
       </form>
       </div>
     );
