@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Signin from "./components/auth/Signin";
 import Signup from "./components/auth/Signup";
 import { Route, Switch, Redirect } from "react-router-dom";
@@ -15,6 +15,13 @@ import SignIn from "./components/auth/Signin";
 
 const App = () =>  {
   const[isAuth, setIsAuth] = useState(false);
+
+  useEffect(() => {
+    if(localStorage.getItem('token') === null)
+      setIsAuth(false);
+    else
+      setIsAuth(true);
+  }, [])
   return (
     <div className="App">
 

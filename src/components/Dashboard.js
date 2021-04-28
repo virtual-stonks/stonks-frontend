@@ -67,7 +67,7 @@ const Dashboard = (props) => {
                     </Col>
 
                     <Col sm="4">
-                        <DashboardAnalytics labels={labels} values={values} />
+                        {labels.length > 0 && <DashboardAnalytics labels={labels} values={values} />}
                     </Col>
 
                     <Col sm="4">
