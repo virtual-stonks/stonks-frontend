@@ -22,7 +22,7 @@ const History = (props) => {
       <Table borderless dark>
         <thead>
           <tr>
-            <th></th>
+            <th>Coin</th>
             <th>Time</th>
             <th>Stock</th>
             <th>Quantity</th>
@@ -34,13 +34,13 @@ const History = (props) => {
 
         {transactions.length > 0 ? transactions.map((trans, idx) => {
           return (
-            <tbody>
-              <th scope="row"><i class="fas fa-dot-circle"></i></th>
+            <tbody>              
+              <th scope="row"><img src={trans.image} alt="crypto" className="img-responsive crypto-img" /></th>
               <td>{trans.date}</td>
               <td>{trans.stockName}</td>
               <td>{trans.qty}</td>
               <td>{trans.cost.toFixed(2)}</td>
-              <td>{trans.isBuy ? "BUY" : "SELL"}</td>
+              <td style={{color: `${trans.isBuy ? "yellow": "red"}`}}>{trans.isBuy ? "BUY" : "SELL"}</td>
               <img
                 src={trans.isBuy ? increase : decrease}
                 alt="Failed to load"

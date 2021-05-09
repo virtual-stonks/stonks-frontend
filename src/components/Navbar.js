@@ -31,6 +31,11 @@ const Navbar = ({isAuth, setIsAuth}) =>  {
                 Dashboard
               </Link>
             </li>
+            <li className="nav-item col">               
+              <Link className="navbar-brand text-light" to="/trending">
+                Trending
+              </Link>
+            </li>  
             <li className="nav-item col">
               <Link className="navbar-brand text-light" to="/market/crypto">
                 Market
@@ -41,11 +46,7 @@ const Navbar = ({isAuth, setIsAuth}) =>  {
                 Holdings
               </Link>
             </li>
-            <li className="nav-item col">               
-              <Link className="navbar-brand text-light" to="/trending">
-                Trending
-              </Link>
-            </li>   
+             
             <li className="nav-item col">               
               <Link className="navbar-brand text-light" to="/history">
                 History

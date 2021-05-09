@@ -43,14 +43,15 @@ class StockApi {
 
     postStockBuy(qty, price, stockName, stockFullName, image) {
         console.log('executed postStockBuy');
-        console.log(qty, price, stockName);
+        console.log(qty, price, stockName, image);
         const url = "http://localhost:5000/api/stock/buy";
-        const body = { stockFullName, image }
+        // const body = { stockFullName, image }
         return axios.post(url, null, {
             params: {
                 qty,
                 price,
                 stockName,
+                image
             },
             headers: {
                 'x-auth-token': `${localStorage.getItem('token')}`
@@ -60,13 +61,14 @@ class StockApi {
 
     postStockSell(qty, price, stockName, stockFullName, image) {
         console.log('executed postStockSell');
-        console.log(qty, price, stockName);
+        console.log(qty, price, stockName, image);
         const url = "http://localhost:5000/api/stock/sell";
         return axios.post(url, null, {
             params: {
                 qty,
                 price,
                 stockName,
+                image
             },
             headers: {
                 'x-auth-token': `${localStorage.getItem('token')}`
