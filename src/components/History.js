@@ -32,6 +32,7 @@ const History = (props) => {
             <th>Stock</th>
             <th>Quantity</th>
             <th>Total Price</th>
+            <th>Wallet</th>
             <th>Type</th>
           </tr>
         </thead>
@@ -45,6 +46,7 @@ const History = (props) => {
               <td>{trans.stockName}</td>
               <td>{trans.qty}</td>
               <td>{trans.cost.toFixed(2)}</td>
+              <td>{Number(trans.wallet).toFixed(2)}</td>
               <td style={{color: `${trans.isBuy ? "yellow": "red"}`}}>{trans.isBuy ? "BUY" : "SELL"}</td>
               <img
                 src={trans.isBuy ? increase : decrease}
