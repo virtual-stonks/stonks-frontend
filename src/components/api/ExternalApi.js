@@ -10,6 +10,16 @@ class ExternalApi {
             }
         })
     } 
+
+    getTrendingList() {
+        console.log('executed getTrendinglist');
+        const url = "http://localhost:5000/api/external/trending";
+        return axios.get(url, {
+            headers: {
+                'x-auth-token': `${localStorage.getItem('token')}`
+            }
+        })
+    }
 }
 
 export default new ExternalApi()

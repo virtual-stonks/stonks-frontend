@@ -12,6 +12,7 @@ import CoinLive from "./components/market/crypto/CoinLive";
 import Holdings from "./components/holdings/Holdings";
 import History from "./components/History";
 import SignIn from "./components/auth/Signin";
+import Trending from "./components/Trending";
 
 const App = () =>  {
   const[isAuth, setIsAuth] = useState(false);
@@ -34,6 +35,7 @@ const App = () =>  {
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/history" component={History} />
+        <Route exact path="/trending" component={Trending} />
         <Route exact path="/" component={() => <Signup isAuth={isAuth} setIsAuth={setIsAuth} />} />
         {/* // 404 */}
         <Redirect to='/'/>
