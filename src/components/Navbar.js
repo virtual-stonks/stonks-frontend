@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-function Navbar(props) {
+const Navbar = ({isAuth, setIsAuth}) =>  {
   console.log(localStorage.getItem("auth-token"));
   return (
     <div>
@@ -27,10 +27,15 @@ function Navbar(props) {
               </Link>
             </li>
             <li className="nav-item col">
-              <Link className="navbar-brand text-light" to="/">
+              <Link className="navbar-brand text-light" to="/dashboard">
                 Dashboard
               </Link>
             </li>
+            <li className="nav-item col">               
+              <Link className="navbar-brand text-light" to="/trending">
+                Trending
+              </Link>
+            </li>  
             <li className="nav-item col">
               <Link className="navbar-brand text-light" to="/market/crypto">
                 Market
@@ -41,24 +46,20 @@ function Navbar(props) {
                 Holdings
               </Link>
             </li>
-            <li className="nav-item col">
-              {
-                localStorage.getItem("auth-token") ?
-                  <Link className="navbar-brand text-light" onClick={localStorage.removeItem("auth-token")} >
-                    Logout
-                  </Link> :
-                  <Link className="navbar-brand text-light" to="/signup">
-                    Signup
-                  </Link>
-              }
-
+             
+            <li className="nav-item col">               
               <Link className="navbar-brand text-light" to="/history">
                 History
               </Link>
-            </li>
+            </li>         
             <li className="nav-item col">
-              <Link className="navbar-brand text-light" to="/signup">
-                Signup
+              <Link className="navbar-brand text-light" to="/"
+                onClick={() => {
+                  localStorage.clear();
+                  setIsAuth(false);
+                }}
+              >
+                Logout
               </Link>
             </li>
           </ul>

@@ -4,6 +4,7 @@ import StockApi from "../api/StockApi"
 import { useHistory } from "react-router-dom";
 import Analysis from './Analysis';
 import { Card, Button, CardTitle, Badge } from 'reactstrap';
+import Waiting from '../utils/Waiting';
 
 const Holdings = (props) => {
     let history = useHistory();
@@ -80,6 +81,7 @@ const Holdings = (props) => {
 
     useEffect(() => {
         let ws = null;// websocket variable
+
         StockApi.getTickerlist()
             .then((res) => {
                 setStocklist(res.data)
@@ -110,20 +112,11 @@ const Holdings = (props) => {
 
         return () => {
             console.log(`Socket disonnected! from Binance`);
-            ws.close();
+            if(ws != null)
+                ws.close();
         };
 
     }, []);
-
-    const getCurVal = (tickerstring) => {
-        if (document.getElementById(tickerstring).innerText != null) {
-            let val = document.getElementById(tickerstring).innerText;
-            // val = val.toFixed(3);
-            console.log(val);
-            return "2";
-        }
-        return null;
-    }
 
     if (loaded)
         return (
@@ -133,6 +126,7 @@ const Holdings = (props) => {
                     {console.log('hi', stocklist)}
                     <thead>
                         <tr>
+                            <th>Coin</th>
                             <th>Instrument</th>
                             <th>Qty</th>
                             <th>Avg Cost</th>
@@ -152,7 +146,7 @@ const Holdings = (props) => {
                     </thead>
                     <tbody>
                         {holdings.length > 0 ? holdings.map((instr, idx) => {
-                            const { investedVal, ltp, qty, stockName } = instr;
+                            const { investedVal, ltp, qty, stockName, image } = instr;
                             let n_investedVal = Number(investedVal); n_investedVal = n_investedVal.toFixed(3);
                             let n_qty = Number(qty); n_qty = n_qty.toFixed(2);
                             let n_ltp = Number(ltp); n_ltp = n_ltp.toFixed(2);
@@ -168,6 +162,7 @@ const Holdings = (props) => {
 
                             const tickerstring = "streams_" + stockName.toUpperCase() + "USDT";
                             return <tr key={idx}>
+                                <th scope="row"><img src={image} alt="crypto" className="img-responsive crypto-img" /></th>
                                 <th scope="row">{stockName}</th>
                                 <td id={tickerstring + "_qty"}>{n_qty}</td>
                                 <td>{n_abp}</td>
@@ -183,7 +178,7 @@ const Holdings = (props) => {
                                         onClick={() => history.push(
                                             {
                                                 pathname: `/live/crypto`,
-                                                state: { detail: { name: stockName, symbol: stockName, image: stockName } }
+                                                state: { detail: { name: stockName, symbol: stockName, image} }
                                             }
                                         )}
                                     >
@@ -208,7 +203,7 @@ const Holdings = (props) => {
         );
 
     else
-        return <> Wow! such empty </>
+        return <Waiting />
 }
 
 export default Holdings;

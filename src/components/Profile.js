@@ -3,6 +3,7 @@ import { Spinner } from "reactstrap";
 import avatar from "../assets/images/avatar.jpg";
 import UserApi from "./api/UserApi"
 import { getUserName }  from "./utils/getUserName"
+import Waiting from "./utils/Waiting";
 
 let crypto = 220;
 let INR = 147;
@@ -59,7 +60,7 @@ const Profile = () =>  {
     </div>
   );
   else
-      return <Spinner />
+      return <Waiting />
 }
 
 export default Profile;

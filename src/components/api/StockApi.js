@@ -1,15 +1,12 @@
 import axios from 'axios'
-import {JWT_TOKEN} from "./config"
 
-class StockApi {
-    token = JWT_TOKEN;
-
+class StockApi {    
     getStockWallet() {
         console.log('executed getStockWallet');
         const url = "http://localhost:5000/api/stock/wallet";
         return axios.get(url, {
             headers: {
-                'x-auth-token': `${this.token}`
+                'x-auth-token': `${localStorage.getItem('token')}`
             }
         })
     }
@@ -19,7 +16,7 @@ class StockApi {
         const url = "http://localhost:5000/api/stock/tickerlist";
         return axios.get(url, {
             headers: {
-                'x-auth-token': `${this.token}`
+                'x-auth-token': `${localStorage.getItem('token')}`
             }
         })
     }
@@ -29,7 +26,7 @@ class StockApi {
         const url = "http://localhost:5000/api/stock/holdings";
         return axios.get(url, {
             headers: {
-                'x-auth-token': `${this.token}`
+                'x-auth-token': `${localStorage.getItem('token')}`
             }
         })
     }
@@ -39,40 +36,42 @@ class StockApi {
         const url = "http://localhost:5000/api/stock/transactions";
         return axios.get(url, {
             headers: {
-                'x-auth-token': `${this.token}`
+                'x-auth-token': `${localStorage.getItem('token')}`
             }
         })
     }
 
     postStockBuy(qty, price, stockName, stockFullName, image) {
         console.log('executed postStockBuy');
-        console.log(qty, price, stockName);
+        console.log(qty, price, stockName, image);
         const url = "http://localhost:5000/api/stock/buy";
-        const body = { stockFullName, image }
+        // const body = { stockFullName, image }
         return axios.post(url, null, {
             params: {
                 qty,
                 price,
                 stockName,
+                image
             },
             headers: {
-                'x-auth-token': `${this.token}`
+                'x-auth-token': `${localStorage.getItem('token')}`
             }
         })
     }
 
     postStockSell(qty, price, stockName, stockFullName, image) {
         console.log('executed postStockSell');
-        console.log(qty, price, stockName);
+        console.log(qty, price, stockName, image);
         const url = "http://localhost:5000/api/stock/sell";
         return axios.post(url, null, {
             params: {
                 qty,
                 price,
                 stockName,
+                image
             },
             headers: {
-                'x-auth-token': `${this.token}`
+                'x-auth-token': `${localStorage.getItem('token')}`
             }
         })
     }
