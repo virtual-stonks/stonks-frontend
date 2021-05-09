@@ -43,7 +43,8 @@ const SignIn = ({ isAuth, setIsAuth }) => {
           console.log(err.response.data);
           setErrors([...err.response.data.errors]);
         } else {
-          setErrors([err.message])
+          console.log(err.message)
+          setErrors([{ msg: "Waiting to server to restart!"}])
         }
       });
   };
@@ -55,7 +56,7 @@ const SignIn = ({ isAuth, setIsAuth }) => {
       <div className="container" style={{ width: "50%" }}>
         {errors.length > 0 && errors.map((err, idx) => {          
           return <Alert key={idx} color="danger" className="mt-1">
-            {err.msg}
+            {err.msg === "" ? "Server Error!" : err.msg}
           </Alert>
         })}
       </div>      

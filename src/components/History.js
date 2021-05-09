@@ -4,19 +4,24 @@ import increase from "../assets/images/increase.jpg";
 import { Card, Button, CardTitle, Badge, Table } from 'reactstrap';
 
 import StockApi from "./api/StockApi"
+import Waiting from "./utils/Waiting";
 
 const History = (props) => {
   const [transactions, setTransactions] = useState([]);
+  const[loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     StockApi.getTransactions()
       .then((res) => {
         console.log(res.data);
         setTransactions(res.data.transactionsBucket);
+        setLoading(false);
       })
       .catch((err) => console.log(err));
   }, [])
 
+ if(!loading)
   return (
     <div>
       <Table borderless dark>
@@ -62,6 +67,8 @@ const History = (props) => {
       </Table>
     </div>
   );
+  else
+        return <Waiting />
 }
 
 export default History;

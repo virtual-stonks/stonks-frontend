@@ -49,7 +49,7 @@ const Signup = ({isAuth, setIsAuth}) => {
           console.log(err.response.data);
           setErrors([...err.response.data.errors]);
         } else {
-          setErrors([err.message])
+          setErrors([{ msg: "Waiting to server to restart!"}])
         }
       });
   };

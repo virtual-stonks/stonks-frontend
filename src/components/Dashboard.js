@@ -3,6 +3,7 @@ import Test from './test/Test';
 import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import UserApi from "./api/UserApi"
 import DashboardAnalytics from "./charts/DashboardAnalytics"
+import Waiting from './utils/Waiting';
 
 const Dashboard = (props) => {
     const [userdata, setUserdata] = useState(null);
@@ -112,7 +113,7 @@ const Dashboard = (props) => {
         )
     }
     else
-        return <> Please wait my friends! </>
+        return <Waiting />
 }
 
 export default Dashboard;

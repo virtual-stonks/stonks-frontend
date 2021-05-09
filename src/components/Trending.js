@@ -3,6 +3,7 @@ import { Card, Button, CardTitle, Badge, Table } from 'reactstrap';
 import { useHistory } from "react-router-dom";
 
 import ExternalApi from "./api/ExternalApi"
+import Waiting from "./utils/Waiting";
 
 const Trending = (props) => {
   const [trending, setTrending] = useState([]);
@@ -18,7 +19,8 @@ const Trending = (props) => {
       .catch((err) => console.log(err));
   }, [])
 
-  return (
+  if(trending.length > 0)
+    return (
     <div>        
       <Table borderless dark>
           {console.log(trending)}
@@ -33,7 +35,7 @@ const Trending = (props) => {
         </thead>
 
 
-        {trending.length > 0 ? trending.map((trans, idx) => {
+        {trending.map((trans, idx) => {
           return (              
             <tbody>
               {/* <th scope="row"><i class="fas fa-dot-circle"></i></th> */}
@@ -63,17 +65,13 @@ const Trending = (props) => {
                 </td>              
             </tbody>
           )
-        }) :
-          <tbody>
-            <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
-              <CardTitle tag="h5">No transactions to show!</CardTitle>
-              <Button>Wow! Such Empty ...</Button>
-            </Card>
-          </tbody>
+        }) 
         }
       </Table>
     </div>
   );
+  else
+        return <Waiting />
 }
 
 export default Trending;

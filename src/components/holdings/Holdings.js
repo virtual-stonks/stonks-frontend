@@ -4,6 +4,7 @@ import StockApi from "../api/StockApi"
 import { useHistory } from "react-router-dom";
 import Analysis from './Analysis';
 import { Card, Button, CardTitle, Badge } from 'reactstrap';
+import Waiting from '../utils/Waiting';
 
 const Holdings = (props) => {
     let history = useHistory();
@@ -202,7 +203,7 @@ const Holdings = (props) => {
         );
 
     else
-        return <> Wow! such empty </>
+        return <Waiting />
 }
 
 export default Holdings;
