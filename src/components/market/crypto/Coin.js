@@ -17,14 +17,14 @@ const Coin = (props) => {
                 <td>$ {numeral(low_24h).format("0.0a")}</td>
                 <td>$ {numeral(high_24h).format("0.0a")}</td>
                 <td
-                    style={{ color: `${priceChange < 0 ? "red" : "#00ff00"}` }}
+                    style={{ color: `${priceChange != null && priceChange < 0 ? "red" : "#00ff00"}` }}
                 >
-                    {priceChange.toFixed(2)}
+                    {priceChange != null && priceChange.toFixed(2)}
                     <i
                         className={`${priceChange < 0 ? "fa fa-fw fa-sort-desc text-danger" : "fa fa-fw fa-sort-asc text-success"}`}
                     />
                 </td>
-                <td> {numeral(total_volume).format("0.0a")}</td>
+                <td> {total_volume != null && numeral(total_volume).format("0.0a")}</td>
                 <td>
                     <button
                         type="button"
