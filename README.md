@@ -1,72 +1,10 @@
-Virtual stonks frontend app
+# VIRTUAL STONKS
+The crypto market is a risky bet. People who have no prior trading or investing experience usually lose a lot of money when they enter the market without prior practise. However, practising investing in a crypto market is not feasible without risking real money $. This is where our virtual crypto market app comes to the rescue.
 
-# Getting Started with Create React App
+Every new user of our app is rewarded with 10,000 USD(coins) which can be used to virtually trade the real crypto market. Watch your money grow, sink as it goes through the turbulence of the crypto market. Develop strategies to buy and sell crypto, and watch your coins grow. Replicate that same strategy in real market and there is a high probability that your strategy will bring profit.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+App Architecture diagram: [Draw.io App Diagram for Virtual Stonks](https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1&title=stonks.drawio#R7V1Zc6JMF%2F41qfq%2BC1Lsy6VblhlHE00yydxMoRIlQTGA2X792ygoNEfsaDfgzKRqJtIggT7b02frE6kxfT%2F3zPnkhzuynBORH72fSM0TUZR4kUe%2FwpGPaESWopGxZ49WY8JmoG9%2FWtFgfNnCHll%2B6sLAdZ3AnqcHh%2B5sZg2D1Jjpee5b%2BrJH10n%2F1bk5tjID%2FaHpZEd%2F2qNgshrVFX4zfmHZ40n8lwU%2BOjM144ujAX9ijty3xJDUOpEanusGq0%2FT94blhLMXz8vqe2dbzq4fzLNmAckXevyvn99vb1%2F0j%2B%2Bv87tH%2FcV%2BuubE6NmCj%2FiFrRF6%2F%2BjQ9YKJO3ZnptPajNY9dzEbWeFdeXS0uabtunM0KKDBJysIPiJimovARUOTYOpEZ613O7hPfH6IbhV%2Bbr4nDz7ig1ngfdwnD5bfOdWU%2BHjzveVR%2FMXsJEXz5rsLbxi9ck03ar23bq9VN03NqL9zN06Li5nN9MZWkHNdNIPhtCX%2BQESCc8udWuh50AWe5ZiB%2FZpmKzPizvH6ug0B0YeIhjA9b6YPlmJ0Lr9fK42Bqhqvr5PLcuh58CTTm7zoq1eujR5F5CM9JBqRDEZaSIyVUHyLFZWjb2EkWD8GEVXyXvPVdBbRK5yIqoPmqj5IEUt9WYTaoP7ozgLOX053DV0gKPP3zUn0aRz%2Brt8%2BoIfpt9rt9c28%2BNxV7bwVj6KLBvF4hjveJnZg9efmkkpvSIenKWv685VSfbTfQw7ZTupXywus91wiRmc5PU0MWY2O3xL6NRqaJFSrzm8nO6nMKEGXf3pvPrXHv87vGtPhePHb4KRSdCCo0YQd6mx5dGV5NnpzyztYx4lZHdfszns%2FDP%2FTa%2FSGg9ugJj7oGqeVpePynhqWppjPVwOhIBFJmApJmI1I%2FH765CckaXXD9B%2BpmoCJWlrABLk4AQMJJm0lGDF9ZIg%2BGbIvfMvLKsOeuwg242lqbSFs%2BUSUZUxLlkxDGaAhrjVno1qIuNHR0DF93x6SqDz%2BdG8MtxObSYR6KzGpCjCp8diBKERStshlfIuVvs6gkMyNZD59I4MZmtmuaoklF8QugMI%2BM%2Bc2%2Bj8pwvuIKhKvAJNOxx7PQp5E7BPazHoohDZa4dWiE1N7NFoZdQs9tzlY3ipkvHk4g8s5VeonSjO8F7Ljq3fLB77kci5JMC13yLlIQc6b7Yvnbw%2F39bu6qap3P1X%2F5boDGtcvyjmRvIJ%2FvFryqohp0mgGUlV7Caxi7LoTPZEFJ1ZRCchaFug9wAIkEW4eR%2B3kPIWU9Q7kKQ2zAZxULCNQgGJkCt1HutWeFQm6Hm3HabiO6y2%2FLo0USx%2FJ4ZMEnvtsJc7o4kBSVTrqW8XUNyfwSkaBG0pWRxnKdtY5SIErermSfcrzalq6VYnZqhacAbk0mT%2BIcBDCZiaai%2FlfJ5piFlmtnfVJyVwPUqcwZIRXE%2B7PzVkCCmeUZ%2Fp8mZDXcwMkC254E05W6FBKARa3EK5jBnpjD2SJOlM8wQIbRrFKUz9OpalvFan9fYGgFg3XpSMrMG2nUHcgpjkf9aE1HEKac6ArspLLAvtrTkEFMA0gn7gfghqV42AwC%2B%2BTSMX9lMecFV3O4q5C0sUszh1KsSsY7StGNAVzqmlEBVpGFFtZlm1TBSjoSUlmd4ksmGCw%2BtbWFAMi05nnZd6pDuQ%2FUx1g95GLVQcC5LA8S1nrikg6NUGPXUYY4UrzGJMIekWSUGAWUggF89AsFNxXVLDvL35Pumko%2FcvzzmUHHZnTEMzOBv486XTw4uvOur0fVY2Y4ykpnJYFvKyirTCptDJEaIu53Rcf7xY8NWs5i8mxW34VQQ%2FzI3FBpMzJ5VdQsIzLHV%2BIA74bzlg9Al0p3%2B5lOlDKb6%2F%2BMCkXCIOt7MQ8677wrJcVHawpQi8nYmP51r7%2F5nqj1dHMnFrlghoKtBBEnBZalhaCWuiCxQCI4a%2BIEbjP1qwySNKg5OdZJ9nHyflZq6cViiSz0cl8cTh2IcDmnwMyYQWpUApA%2FtTKABGGeQJiuVAESPFKIwcNozjjpYLIBERcee6jjb64E0VchUU5R4IiCJffzDCEmDVbSKAmaIRD%2FyrjCKFhrtJ%2BDwC8rRVqIcoy1swQYAjnfRpVwz35bsnYgYatwhSSBMy%2ByGr2oZoEpQzDtL%2BBkUmDRip1C3NYVsr22iXigKpBlJYyWHyUmJNSTGRVx4yHVGBaP6zDoHAaLlcFRmniz7RjNCKh9EmkFYkFlQyomNpVMEYgLhnAooPsSgbgad2ep8GkkODUD9zh819VR4BxiggY6ELDQnIWHR2emgOWga1KRsIOAEh1O06qfuTLCTrHRncVqwXioGq%2FgnExBchAVu%2BXkvI%2FrOCv9IWlXGLJH7MEjlyG3Z3BUS10oOCV9Hhbg31TuiScqRjDAxmKTO%2FLahx%2FyktKmt%2FkTX5tMem05CylVpqlMpxAylIahkdkPKueIktB7gE1y0CFZnSrgpRkQeGU57ViWVAGXNpH4XHY7nuO4UPcJSoGCEIuViCAGxoEN%2Fzlw%2F5lHgm57Ji4TMMjAcIHLR8%2FlFCcSmwkKpZJjsMFWTiVRV3RhNX%2FkkTHZihqsTBELTnr6tSQpDTvGQXDFpm0DKhqNoOCfwlsAZRZck5cZ2TPxv5fZxjUsl3VcjbQCXn%2FtoYRynT0MEgDV7E0cAmob5WLdPvExmUHfbajqooQSKRVRbdtBVQagXLbEK4JlK%2FhKkIkWqXHKqblFIBIhebAKds7dOzvNtch0%2Faj2znvorNNNLLMFbntt3qHuM79iTkPPw4%2FnLBzXkj7HZZusMJO7cF6wBw%2Bj5eIqrsI0F02lI9BVni07qQbcs04XABEn3FD%2BfgowoZypA5UJewz4KJns4OQ%2BLTspiBgcs9BpXgSVD8r43iXHldlF1W9Vq1ZrjhTmGwNTyMGnOaFVj0qWZDSQDN90zr%2BqcbLfrMzXWi6tpq1Zn8IS6dxnVA2S8dLPfYWqX%2FTbXw%2FbguUsTT88gezTTM3vC8Va4PH%2Fde9EpLhXwjBCDQWamBP%2BSyCWbaq5k%2B0%2Bgsytascfs9GFFl%2BXAZxO2FRi1ay9KaJFxEpWau%2FLLwIuTJy5ix9%2FMvj6IkFCiTl8LIACcq1hPADDRUAUjQbCd5UxnjmzDeHyxkKKWcGC7RyqEDOK0hMnHYUyIWH7YEFBCh%2FNIgFbgHAYgEBpmOEref%2FlyvR%2Fz%2BaTByQWyhwB2bMZcCYi1ATMmbc8ceKMov6OGx1AWXrFivbJG1c90rJ2bnxABhRE1m1VAECYwdVYxUTF8NX%2FtK%2B%2BTh4tUXGqU4vEAaymQCwVaGBMEmWT9LZE8LOlLG9I2HgFFQ%2FEJb32OzjYG%2Bm41jBXxcF0wrcrAYWTSjK8lUT8OXCi2rkRuRxfEVMAN5VS8YLLUhNAM54OuGWVdubmlA3EoWleaPHO1zdlI9YGYSvcP%2B3Cqw%2BWXllYabIrj4T1cgxFatMGmpdjbUtYLCAghyYNNsbjO%2FvGIATJ1dlGcdYkcPKD6Bj9Xci1O6GVTYAzA5fy7mPpmJk%2BpO1FzxBknD8ygwQOZY5Lug20no2431TxbyprIj9ljCFqmt7bvmC34hjmAAP0ze3hcd%2B4i6CYZuzXrdz0%2Bo0%2F3oh57BtfjgJauhTqMNI2N4ueW8ukHhwO9Ja4%2Fs%2FJggVO8YEGmlEDkf49JjAyGr2knZ53lHDlyygEbEaLkPXi3UBCYAP6Ai2gAaaCh6O88Di%2B4tuu3nZOe8fIvMV6OCkFujTGXPXi9HU1tuupz49nY0W4s1jOa1sEqIm4JLGztcKvr%2BYlbOK%2BVrzHpv9PsTI4j1bnmP7QZGSVgl%2Fq15gORpIZBpF8JEh3Bi%2FY3G45rF9RRZsmVo0vFMiscMVA%2B%2B6QLZeY%2BJwBSceWtCdMcrtmNoze6V2jhvQs%2FC5YgBfLXDL3ie%2Bdx2cWy%2BPuv2pT%2FXBfetOZWKHQLyHqGl5CGOsb%2B%2FFZzIdV44BB%2BIdVzgJyGlmt0UgSEsoeeur5oZegkeuiSIyNaTN2PIYuyKWRsIc%2BpyASzRxM7ZMzi67%2FA5wYg%2FfalSUiCJ3Q%2FQGY2v47IbvFu7vvn%2F8Dr2WPfdDnb7O8nbcRagKdqgODMcOhNHoEUzVFnhNMmj5%2BzNtuXjADQTuoifiwIOactndWINScsjJsgkf%2Bh%2B3GMcZuKXADxKWCAq2emfVpe3t5sa5ur3hhq%2BXnfPejdO5avCxpSnN6aClnA67zBORsQHfEzA21XLi5T01e0zXrPUv6t1ar3lk4C1TJaFDbnZIogQa%2BtWqy%2FW3cVc4Mz7Pfz49Xty9Tl%2BKI1poVv2%2Fwh8k8DhIV5XsLiXs6KwEXf7pvfnUHv86v2tMh%2BPFb4MoC7sivch7lvBQ8zTutn%2F5%2Bvlu%2FnLnxiekEvP4uXiVmPfU7KWr12pe9tHZRq1x0TpEwvByRGk3WCWuR4wxi5KVzBECn5oESWZN4UN5Ws1DulAe%2FdCRWLyjAqdCqS7QVgHr%2FBfqrMNsVU3QyRQKlcAeYQrL7bxldFLc8wSsIsvtDB9JuNOFuK1Ydt9NZsttsBclQQ7G0POGy58vKZbF1KkNAze5BGqbA8u5QkuayOs5cIPAnQJrpMDFVI%2B70i8NdzZbGf6lXUr3x8A0Dc%2FrJp%2BnT9IJYAaltRTuiNGguixo3yyBSoMNiMQ5ydD7Z1uBPpbbfi%2B0Tb1uB%2F361t2%2BjD4K%2FzwFdjAymXZF1kvD3MCudXaOuZHFjTXaZnHSyTgS9pNrgMKD%2FToN5ujEYzNKWBovJ%2BKmhNgo4Q7CjHmjZ5SMp86vH437y1oXLeZa%2Bs0v5U7mAI4s1P9D3%2F3zW%2Fx0X6%2FnrVen%2BzD47c%2B79w%2FfYuhXXfdP3lNTtSZg1uaF7SP88HGIESnF%2BcNje8FBm8Exi9yB8sSiugJcnt5syvT9Q%2BhW0urUEkaKpUGrU0PVJFOl5DfC996GICLIIDSycEEGobnHATLd687ARNFdYkxw%2BBqUePu7PDGqiL3XBZyL9s0uwlsDsFuCgtNKtXHEqSofF%2FMBOyH8Yz4mzAf6ywsrPDxvd%2Bu19r%2FlcTryjHtLIKzEKmEN5AeCAoV%2F%2FrAv5Jpkys4gjzszfxhIYqhXOx0HCOi0qLL1AVageVJREeOj4Dlq%2B24EpWJWjMsgbMbWh0rHlP1yKstmPfkf65XLelBU4ADYnd4e5iD2SzRvW6nVHfUo%2Bzp%2F8%2FjtyJy%2FGb7MVB3tzZiZTnGsGVNkaJ93sWWJoQhSbjys%2FPAfO25nx8XvvvXat51J%2B5s0runXD5Oz3zSK7MiMJGEkKi9pviLUVzNB8L136szsoVAw9SHH6KHBDgFsUXHZqXUaB6V00apCINiaZCtHk68M8W50CJAAsXERXBrSqKgFyU3DFXkE0ew8Vq%2BIDgGANi0LorNzMT5ftoNJLfCaZ3etj4%2BWrPD3YxbJobAOCRBzhNtj%2FfGZ1xoWYuXkQhPsQSqXmcfJrAE2ac5mHt9XRKGomaQWnBWIFQqeaCOx2wsWnFiKfR%2FIPT2Jtb4spfnT2HTEpt6UJY%2BzjgwWK7gvXMGjGMQciBeeKHhnCYYNIdCh54Z2Z3M5MhOTH%2B7ICq%2F4Dw%3D%3D)
 
-In the project directory, you can run:
+Frontend Netlify Deployed Link: [https://virtual-stonks.netlify.app/](https://virtual-stonks.netlify.app/)
 
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
