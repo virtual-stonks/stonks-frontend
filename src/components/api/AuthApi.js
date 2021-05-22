@@ -1,21 +1,19 @@
 import axios from 'axios'
-import {JWT_TOKEN} from "./config"
 
-
-class AuthApi {
-    token = JWT_TOKEN;
+class AuthApi {    
+    backend = process.env.REACT_APP_BACKEND;
 
     signUpUser(userInfo) {
         console.log(userInfo);
         console.log('executed signUpUser');
-        const url = "http://localhost:5000/api/user/signup";
+        const url = `${this.backend}/api/user/signup`;
         return axios.post(url, userInfo);
 
     }
     
     signInUser(userInfo) {
         console.log('executed signInUser');
-        const url = "http://localhost:5000/api/user/signin";
+        const url = `${this.backend}/api/user/signin`;
         return axios.post(url, userInfo);
     }
 }

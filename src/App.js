@@ -22,6 +22,8 @@ const App = () =>  {
       setIsAuth(false);
     else
       setIsAuth(true);
+    
+      console.log(process.env)
   }, [])
   return (
     <div className="App">

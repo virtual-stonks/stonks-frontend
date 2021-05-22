@@ -1,9 +1,10 @@
 import axios from 'axios'
 
-class StockApi {    
+class StockApi {  
+    backend = process.env.REACT_APP_BACKEND;  
     getStockWallet() {
         console.log('executed getStockWallet');
-        const url = "http://localhost:5000/api/stock/wallet";
+        const url = `${this.backend}/api/stock/wallet`;
         return axios.get(url, {
             headers: {
                 'x-auth-token': `${localStorage.getItem('token')}`
@@ -13,7 +14,7 @@ class StockApi {
 
     getTickerlist(){
         console.log('executed getTickerlist');
-        const url = "http://localhost:5000/api/stock/tickerlist";
+        const url = `${this.backend}/api/stock/tickerlist`;
         return axios.get(url, {
             headers: {
                 'x-auth-token': `${localStorage.getItem('token')}`
@@ -23,7 +24,7 @@ class StockApi {
 
     getStockHolding() {
         console.log('executed getStockHolding');
-        const url = "http://localhost:5000/api/stock/holdings";
+        const url = `${this.backend}/api/stock/holdings`;
         return axios.get(url, {
             headers: {
                 'x-auth-token': `${localStorage.getItem('token')}`
@@ -33,7 +34,7 @@ class StockApi {
 
     getTransactions() {
         console.log('executed getTransactions');
-        const url = "http://localhost:5000/api/stock/transactions";
+        const url = `${this.backend}/api/stock/transactions`;
         return axios.get(url, {
             headers: {
                 'x-auth-token': `${localStorage.getItem('token')}`
@@ -44,7 +45,7 @@ class StockApi {
     postStockBuy(qty, price, stockName, stockFullName, image) {
         console.log('executed postStockBuy');
         console.log(qty, price, stockName, image);
-        const url = "http://localhost:5000/api/stock/buy";
+        const url = `${this.backend}/api/stock/buy`;
         // const body = { stockFullName, image }
         return axios.post(url, null, {
             params: {
@@ -62,7 +63,7 @@ class StockApi {
     postStockSell(qty, price, stockName, stockFullName, image) {
         console.log('executed postStockSell');
         console.log(qty, price, stockName, image);
-        const url = "http://localhost:5000/api/stock/sell";
+        const url = `${this.backend}/api/stock/sell`;
         return axios.post(url, null, {
             params: {
                 qty,
