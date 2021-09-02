@@ -1,5 +1,5 @@
 # VIRTUAL STONKS
-The crypto market is a risky bet. People who have no prior trading or investing experience usually lose a lot of money when they enter the market without prior practise. However, practising investing in a crypto market is not feasible without risking real money $. This is where our virtual crypto market app comes to the rescue.
+The crypto market is a risky bet. People who have no prior trading or investing experience usually lose a lot of money when they enter the market without prior practice. However, practising investing in a crypto market is not feasible without risking real money $. This is where our virtual crypto market app comes to the rescue.
 
 Every new user of our app is rewarded with 10,000 USD(coins) which can be used to virtually trade the real crypto market. Watch your money grow, sink as it goes through the turbulence of the crypto market. Develop strategies to buy and sell crypto, and watch your coins grow. Replicate that same strategy in real market and there is a high probability that your strategy will bring profit.
 
