@@ -8,3 +8,4 @@ App Architecture diagram: [Draw.io App Diagram for Virtual Stonks](https://viewe
 
 Frontend Netlify Deployed Link: [https://virtual-stonks.netlify.app/](https://virtual-stonks.netlify.app/)
 
+Documentation: [Virtual Stonks PPT](https://docs.google.com/presentation/d/1eMFgIvb-CO9Wky4uBhiPpP6k_5GWedKL/edit?usp=sharing&ouid=117046617198994833186&rtpof=true&sd=true)
